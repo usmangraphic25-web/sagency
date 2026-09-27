@@ -5,14 +5,16 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles, TrendingUp } from "lucide-react";
+import { getValidImageUrl } from "@/lib/portfolioUtils";
 
-// ─── Instant Fallback Projects (Emergency Fallback Only) ──────────────────────
+// ─── Instant Fallback Projects ────────────────────────────────────────────────
 const FALLBACK_PROJECTS = [
+  // PPC / Ad Management
   {
     id: "ppc_1786733798883_3ynez",
     title: "Sales & PPC Growth Performance Overhaul",
-    categoryLabel: "AMAZON · PPC CAMPAIGNS",
-    categorySlug: "amazon-growth",
+    categoryLabel: "PPC · AD MANAGEMENT",
+    categorySlug: "ppc",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786733750987_hkqvk.png",
     client: "Amazon Brand Partner",
     statBadge: "$100,471 Revenue",
@@ -26,8 +28,8 @@ const FALLBACK_PROJECTS = [
   {
     id: "ppc_1786652444754_sc1et",
     title: "Drastic ACoS Reduction & Profit Optimization",
-    categoryLabel: "AMAZON · PPC CAMPAIGNS",
-    categorySlug: "amazon-growth",
+    categoryLabel: "PPC · TURNAROUND",
+    categorySlug: "ppc",
     image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786652330911_olhcf.png",
     client: "HealthCare Brand",
     statBadge: "-132% ACoS Cut",
@@ -38,43 +40,167 @@ const FALLBACK_PROJECTS = [
       "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786652330911_olhcf.png",
     ],
   },
+  {
+    id: "ppc_1786652094670_ithea",
+    title: "Scaling to $46K Monthly at 13.89% ACoS",
+    categoryLabel: "PPC · SCALING",
+    categorySlug: "ppc",
+    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786652094670_ithea.png",
+    client: "Amazon Brand Partner",
+    statBadge: "$46K/mo at 13.89% ACoS",
+    description: "Scaled Amazon PPC sales to $46,487.44 in a single month while maintaining a 13.89% ACoS.",
+    problem: "Inefficient ad spend, high ACoS, and poor keyword targeting.",
+    solution: "Restructured campaigns, separated high-converting keywords, and implemented profit-driven bidding.",
+    gallery: [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786652094670_ithea.png",
+    ],
+  },
+
+
+  // Website Development
+  {
+    id: "wd1",
+    title: "Shopify Fashion Storefront & Conversion UX",
+    categoryLabel: "WEBSITE DEVELOPMENT",
+    categorySlug: "webdev",
+    image: "/assets/webdev-shopify.png",
+    client: "Fashion & Lifestyle Brand",
+    statBadge: "+55% Checkout Uplift",
+    description: "+55% checkout completion rate after full Shopify theme redesign and mobile conversion UX optimization.",
+    problem: "High cart abandonment and poor mobile checkout experience.",
+    solution: "Streamlined one-page checkout, mobile-first product pages, and trust signal optimization.",
+    gallery: ["/assets/webdev-shopify.png"],
+  },
+  {
+    id: "wd2",
+    title: "Next.js SaaS Dashboard & Marketing Hub",
+    categoryLabel: "WEBSITE DEVELOPMENT",
+    categorySlug: "webdev",
+    image: "/assets/webdev-nextjs.png",
+    client: "SaaS Platform",
+    statBadge: "3.8x Conversion Lift",
+    description: "3.8x organic signup conversion rate after Next.js 14 rebuild with sub-second page speed.",
+    problem: "Slow page loads and poor SEO hurting organic acquisition.",
+    solution: "Rebuilt marketing site and portal in Next.js 14 with App Router and optimized Core Web Vitals.",
+    gallery: ["/assets/webdev-nextjs.png"],
+  },
+
+  // Video Content
+  {
+    id: "v1",
+    title: "Anker Soundcore Product Commercial Video",
+    categoryLabel: "VIDEO CONTENT",
+    categorySlug: "video",
+    image: "/assets/portfolio-video-v4.jpg",
+    client: "Anker Soundcore",
+    statBadge: "+28% CTR Lift",
+    description: "High-energy Amazon Sponsored Video ad featuring active noise cancellation demo and 3D explode views.",
+    problem: "Low click-through rates on static ad campaigns.",
+    solution: "Produced high-impact 45-second commercial video ad optimized for Amazon Sponsored Video.",
+    gallery: ["/assets/portfolio-video-v4.jpg"],
+  },
+  {
+    id: "v2",
+    title: "3D Kinetic Motion Graphics Reveal",
+    categoryLabel: "VIDEO CONTENT",
+    categorySlug: "video",
+    image: "/assets/showcase-video-motion.png",
+    client: "Velox Motion Tech",
+    statBadge: "2.1x Brand Recall",
+    description: "Sleek 3D particle motion graphics reveal for next-gen digital product launch.",
+    problem: "Generic product animation failing to create viral impact.",
+    solution: "Created photorealistic 3D explode renders and kinetic motion graphic teasers.",
+    gallery: ["/assets/showcase-video-motion.png"],
+  },
 ];
 
-// Main filter options
+// Exact 6 services matching main portfolio + All Work
 const CATEGORY_FILTERS = [
   { id: "all", label: "All Work" },
-  { id: "amazon-growth", label: "Amazon Growth" },
-  { id: "graphic-designing", label: "Graphic & Packaging" },
-  { id: "web-development", label: "Web Development" },
-  { id: "video-editing", label: "Video & Motion" },
+  { id: "ppc", label: "PPC / Ad Management" },
+  { id: "listing", label: "Listing Images & Creatives" },
+  { id: "aplus", label: "A+ Content / Brand Store" },
+  { id: "graphic", label: "Graphic Design" },
+  { id: "webdev", label: "Website Development" },
+  { id: "video", label: "Video Content" },
 ];
 
 function mapDbProject(p) {
   const service = (p.service || "").toLowerCase();
-  let categorySlug = p.categorySlug || p.subCategory || "graphic-designing";
+  const rawSub = (p.subCategory || p.categorySlug || "").toLowerCase().trim();
+  const tag = (p.tag || "").toLowerCase();
 
-  if (service.includes("amazon") || categorySlug.startsWith("amazon") || categorySlug === "a-plus-content" || categorySlug === "amazon-brand-store") {
-    categorySlug = "amazon-growth";
-  } else if (service.includes("web") || categorySlug === "web-development") {
-    categorySlug = "web-development";
-  } else if (service.includes("video") || service.includes("motion")) {
-    categorySlug = "video-editing";
-  } else if (service.includes("graphic") || ["logo-brand-identity", "ui-ux-design", "packaging-print-design"].includes(categorySlug)) {
-    categorySlug = "graphic-designing";
+  let categorySlug = "graphic";
+
+  if (
+    service.includes("graphic") ||
+    ["logo-brand-identity", "logo-branding", "ui-ux-design", "packaging-print-design", "3d-product-design-mockups", "shopify-store-web-graphics", "social-media-ad-creatives"].includes(rawSub)
+  ) {
+    categorySlug = "graphic";
+  } else if (
+    service.includes("ppc") ||
+    rawSub.includes("ppc") ||
+    rawSub === "amazon-ppc" ||
+    rawSub === "amazon-campaigns" ||
+    tag.includes("ppc")
+  ) {
+    categorySlug = "ppc";
+  } else if (
+    service.includes("listing") ||
+    rawSub === "amazon-listing-images" ||
+    rawSub === "listing-images" ||
+    (rawSub.includes("listing") && !service.includes("graphic"))
+  ) {
+    categorySlug = "listing";
+  } else if (
+    service.includes("a-plus") ||
+    service.includes("a+") ||
+    service.includes("brand store") ||
+    rawSub === "a-plus-content" ||
+    rawSub === "amazon-brand-store" ||
+    tag.includes("a+")
+  ) {
+    categorySlug = "aplus";
+  } else if (
+    service.includes("account") ||
+    rawSub.includes("account") ||
+    tag.includes("account") ||
+    rawSub === "amazon-growth"
+  ) {
+    categorySlug = "graphic";
+  } else if (
+    service.includes("web") ||
+    rawSub.includes("web") ||
+    rawSub === "web-development"
+  ) {
+    categorySlug = "webdev";
+  } else if (
+    service.includes("video") ||
+    service.includes("motion") ||
+    rawSub.includes("video") ||
+    rawSub === "video-editing"
+  ) {
+    categorySlug = "video";
   }
 
-  const rawSub = (p.subCategory || p.categorySlug || "").toLowerCase().trim();
   const SUB_LABEL_MAP = {
-    "amazon-listing-images": "AMAZON · LISTING IMAGES",
-    "a-plus-content": "AMAZON · A+ CONTENT",
-    "amazon-brand-store": "AMAZON · BRAND STORE",
-    "amazon-ppc": "AMAZON · PPC CAMPAIGNS",
+    "amazon-ppc": "PPC · AD MANAGEMENT",
+    "amazon-campaigns": "PPC · AD MANAGEMENT",
+    "amazon-listing-images": "LISTING IMAGES & CREATIVES",
+    "a-plus-content": "A+ CONTENT · BRAND STORY",
+    "amazon-brand-store": "A+ CONTENT · BRAND STORE",
+    "full-account-management": "GRAPHIC DESIGN",
+    "amazon-growth": "GRAPHIC DESIGN",
     "3d-product-design-mockups": "GRAPHIC · 3D MOCKUPS",
-    "shopify-store-web-graphics": "GRAPHIC · SHOPIFY",
-    "logo-brand-identity": "GRAPHIC · BRANDING",
+    "shopify-store-web-graphics": "GRAPHIC · SHOPIFY WEB",
+    "logo-brand-identity": "GRAPHIC · LOGO & BRANDING",
+    "logo-branding": "GRAPHIC · LOGO & BRANDING",
+    "ui-ux-design": "GRAPHIC · UI/UX DESIGN",
     "packaging-print-design": "GRAPHIC · PACKAGING",
-    "web-development": "WEB DEVELOPMENT",
-    "video-editing": "VIDEO & MOTION",
+    "social-media-ad-creatives": "GRAPHIC · SOCIAL MEDIA",
+    "web-development": "WEBSITE DEVELOPMENT",
+    "video-editing": "VIDEO CONTENT",
+    "video-motion-design": "VIDEO CONTENT",
   };
 
   const categoryLabel = SUB_LABEL_MAP[rawSub] || (p.service || "PORTFOLIO").toUpperCase();
@@ -83,12 +209,16 @@ function mapDbProject(p) {
   const gallery = mediaItems.length > 0
     ? mediaItems.map((m) => m.url).filter(Boolean)
     : Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : [];
-  const coverImage = p.coverImage || p.image || gallery[0] || "/assets/portfolio-web-v4.jpg";
+  const coverImage = getValidImageUrl(p, "/assets/portfolio-web-v4.jpg");
 
   let statBadge = p.metricValue || p.tag || null;
   if (!statBadge) {
-    if (categorySlug === "amazon-growth") statBadge = "Growth Case Study";
-    else if (categorySlug === "web-development") statBadge = "Custom Next.js";
+    if (categorySlug === "ppc") statBadge = "PPC Growth Case";
+    else if (categorySlug === "listing") statBadge = "Conversion Lift";
+    else if (categorySlug === "aplus") statBadge = "Brand Story";
+    else if (categorySlug === "graphic") statBadge = "Brand Identity";
+    else if (categorySlug === "webdev") statBadge = "Custom Web";
+    else if (categorySlug === "video") statBadge = "Video Creative";
     else statBadge = "Featured Work";
   }
 
@@ -109,7 +239,7 @@ function mapDbProject(p) {
 }
 
 export default function HomePortfolioCarousel({ limit = 6 }) {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(FALLBACK_PROJECTS);
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("all");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -128,10 +258,17 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
         clearTimeout(timer);
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {
           const mapped = json.data
-            .filter((p) => p.status !== "Hidden" && p.published !== false && !p.deleted)
+            .filter((p) => (p.status || '').toUpperCase() !== "HIDDEN" && p.published !== false && !p.deleted)
             .map(mapDbProject);
           if (mapped.length > 0) {
-            setProjects(mapped);
+            // Combine mapped live DB projects with fallback projects for unpopulated categories
+            const merged = [...mapped];
+            FALLBACK_PROJECTS.forEach((fb) => {
+              if (!merged.some((m) => m.categorySlug === fb.categorySlug)) {
+                merged.push(fb);
+              }
+            });
+            setProjects(merged);
             setIsLoading(false);
             return;
           }
@@ -146,11 +283,17 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
       });
   }, []);
 
-  // Filter projects based on tab
+  // Filter projects based on selected service tab
   const filteredProjects = useMemo(() => {
     let list = projects;
     if (activeFilter !== "all") {
-      list = projects.filter((p) => p.categorySlug === activeFilter);
+      const categoryMatches = projects.filter((p) => p.categorySlug === activeFilter);
+      if (categoryMatches.length > 0) {
+        list = categoryMatches;
+      } else {
+        const fallbackMatches = FALLBACK_PROJECTS.filter((p) => p.categorySlug === activeFilter);
+        list = fallbackMatches.length > 0 ? fallbackMatches : projects;
+      }
     }
     return list.slice(0, limit);
   }, [projects, activeFilter, limit]);
@@ -183,7 +326,6 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
     return () => clearInterval(timer);
   }, [isHovered, total, handleNext]);
 
-  if (total === 0 && !isLoading) return null;
   if (total === 0 && isLoading) {
     return (
       <section className="w-full relative py-20 bg-[var(--background)] border-b border-[var(--border)] animate-pulse">
@@ -194,11 +336,11 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
     );
   }
 
-  const activeProject = filteredProjects[activeIndex] || filteredProjects[0];
+  const activeProject = filteredProjects[activeIndex] || filteredProjects[0] || FALLBACK_PROJECTS[0];
   const nextProjectIndex = (activeIndex + 1) % total;
-  const nextProject = filteredProjects[nextProjectIndex];
+  const nextProject = filteredProjects[nextProjectIndex] || activeProject;
   const prevProjectIndex = (activeIndex - 1 + total) % total;
-  const prevProject = filteredProjects[prevProjectIndex];
+  const prevProject = filteredProjects[prevProjectIndex] || activeProject;
 
   return (
     <section className="w-full relative py-20 sm:py-28 bg-[var(--background)] bg-agenko-grid overflow-hidden border-b border-[var(--border)]">
@@ -242,7 +384,11 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setActiveFilter(cat.id)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveFilter(cat.id);
+                  }}
                   className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 shadow-sm cursor-pointer whitespace-nowrap ${isActive
                     ? "bg-[#9D26FF] text-white shadow-md shadow-purple-900/30 scale-[1.03]"
                     : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF] hover:text-[var(--foreground-heading)]"

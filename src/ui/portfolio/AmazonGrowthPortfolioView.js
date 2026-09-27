@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, Sparkles, FolderOpen, TrendingUp, ArrowRight, Layers, Layout, ShoppingBag, BarChart2, CheckCircle2 } from "lucide-react";
 import PortfolioCard from "@/components/portfolio/PortfolioCard";
 import { amazonGrowthCategories } from "@/lib/amazonGrowthData";
+import { getValidImageUrl } from "@/lib/portfolioUtils";
 import AmazonPpcProvenResults from "@/components/services/AmazonPpcProvenResults";
 import AmazonConnectedWorkflow from "@/components/portfolio/AmazonConnectedWorkflow";
 
@@ -51,8 +52,9 @@ export default function AmazonGrowthPortfolioView() {
   const amazonProjects = useMemo(() => {
     return dbProjects.filter(
       (p) =>
+        !p.deleted &&
         p.published !== false &&
-        p.status !== "Hidden" &&
+        (p.status || '').toUpperCase() !== "HIDDEN" &&
         ((p.service || "").toLowerCase().includes("amazon") ||
           (p.categorySlug || "").startsWith("amazon") ||
           (p.categorySlug || "").startsWith("a-plus"))
@@ -84,10 +86,9 @@ export default function AmazonGrowthPortfolioView() {
   }, [amazonProjects, caseStudies]);
 
   const currentItems = useMemo(() => {
-    if (!activeCategory) return [];
-
-    if (activeCategory === "amazon-campaigns") {
-      return caseStudies.map((cs) => ({
+    const mappedCaseStudies = caseStudies.map((cs) => {
+      const imageUrl = getValidImageUrl(cs, "/assets/portfolio-amazon-v4.jpg");
+      return {
         id: cs.id,
         isCaseStudy: true,
         title: cs.title,
@@ -95,7 +96,8 @@ export default function AmazonGrowthPortfolioView() {
         categoryName: "Amazon Campaigns",
         categorySlug: "amazon-campaigns",
         slug: cs.slug,
-        image: cs.resultImageUrl || cs.mainResultImageUrl || cs.coverImageUrl || "",
+        image: imageUrl,
+        coverImage: imageUrl,
         shortDescription: cs.shortDescription || cs.summary,
         description: cs.fullCaseStudyData || cs.summary,
         client: cs.brandName,
@@ -107,7 +109,15 @@ export default function AmazonGrowthPortfolioView() {
         problem: cs.problem,
         solution: cs.solution,
         results: cs.results || cs.result
-      }));
+      };
+    });
+
+    if (!activeCategory) {
+      return [...amazonProjects, ...mappedCaseStudies];
+    }
+
+    if (activeCategory === "amazon-campaigns") {
+      return mappedCaseStudies;
     }
 
     return amazonProjects.filter((p) => {

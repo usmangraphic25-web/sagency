@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Sparkles, ArrowUpRight } from "lucide-react";
+import { getValidImageUrl } from "@/lib/portfolioUtils";
 
 // Main category filter options
 const MAIN_CATEGORIES = [
@@ -63,13 +64,13 @@ function mapDbProjectToItem(p, index) {
     categorySlug = "digital-marketing";
   } else if (service.includes("video") || service.includes("motion") || categorySlug === "video-editing" || categorySlug === "video-motion-design") {
     categorySlug = "video-editing";
-  } else if (service.includes("graphic") || categorySlug.startsWith("graphic") || categorySlug === "logo-brand-identity" || categorySlug === "ui-ux-design" || categorySlug === "packaging-print-design" || categorySlug === "social-media-ad-creatives" || categorySlug === "3d-product-design-mockups" || categorySlug === "shopify-store-web-graphics") {
+  } else if (service.includes("graphic") || categorySlug.startsWith("graphic") || categorySlug === "logo-brand-identity" || categorySlug === "logo-branding" || categorySlug === "ui-ux-design" || categorySlug === "packaging-print-design" || categorySlug === "social-media-ad-creatives" || categorySlug === "3d-product-design-mockups" || categorySlug === "shopify-store-web-graphics") {
     categorySlug = "graphic-designing";
   }
 
   // Resolve sub-category slug (the original DB value is the sub-filter id)
   const rawSub = (p.subCategory || p.categorySlug || "").toLowerCase().trim();
-  let subCategorySlug = rawSub;
+  let subCategorySlug = rawSub === "logo-branding" ? "logo-brand-identity" : rawSub;
 
   // Build a human-readable category label for the card badge
   const SUB_LABEL_MAP = {
@@ -79,7 +80,8 @@ function mapDbProjectToItem(p, index) {
     "amazon-ppc": "AMAZON · AMAZON PPC",
     "3d-product-design-mockups": "GRAPHIC · 3D MOCKUPS",
     "shopify-store-web-graphics": "GRAPHIC · SHOPIFY",
-    "logo-brand-identity": "GRAPHIC · LOGO & BRAND",
+    "logo-brand-identity": "GRAPHIC · LOGO & BRANDING",
+    "logo-branding": "GRAPHIC · LOGO & BRANDING",
     "social-media-ad-creatives": "GRAPHIC · SOCIAL MEDIA",
     "packaging-print-design": "GRAPHIC · PACKAGING",
     "ui-ux-design": "GRAPHIC · UI/UX",
@@ -106,7 +108,7 @@ function mapDbProjectToItem(p, index) {
     ? mediaItems.map(m => m.url).filter(Boolean)
     : (Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : []);
 
-  const coverImage = p.coverImage || p.image || (gallery[0]) || "/assets/portfolio-web-v4.jpg";
+  const coverImage = getValidImageUrl(p, "/assets/portfolio-web-v4.jpg");
 
   return {
     id: p.id,
@@ -379,7 +381,7 @@ export default function PortfolioTwo({ limit = null }) {
       const json = await res.json();
       if (json.success && Array.isArray(json.data) && json.data.length > 0) {
         const mapped = json.data
-          .filter(p => p.status !== "Hidden" && p.published !== false && !p.deleted)
+          .filter(p => (p.status || '').toUpperCase() !== "HIDDEN" && p.published !== false && !p.deleted)
           .map((p, i) => mapDbProjectToItem(p, i));
         if (mapped.length > 0) {
           setPortfolioItems(mapped);
@@ -424,7 +426,11 @@ export default function PortfolioTwo({ limit = null }) {
         const currentSubId = activeSubFilterMap[activeCategory];
         const allPrefix = `all-${activeCategory}`;
         if (currentSubId && currentSubId !== allPrefix) {
-          if (item.subCategorySlug !== currentSubId) {
+          const isLogoSub = (currentSubId === "logo-brand-identity" || currentSubId === "logo-branding");
+          const itemIsLogo = (item.subCategorySlug === "logo-brand-identity" || item.subCategorySlug === "logo-branding");
+          if (isLogoSub) {
+            if (!itemIsLogo) return false;
+          } else if (item.subCategorySlug !== currentSubId) {
             return false;
           }
         }

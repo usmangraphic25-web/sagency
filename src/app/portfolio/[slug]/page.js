@@ -106,8 +106,9 @@ export default async function DynamicPortfolioPage({ params }) {
     const serviceProjects = allDbProjects.filter(
       (p) =>
         (p.service === category.name || p.categorySlug === category.slug) &&
+        !p.deleted &&
         p.published !== false &&
-        p.status !== "Hidden"
+        (p.status || '').toUpperCase() !== "HIDDEN"
     );
 
     /* JSON-LD */

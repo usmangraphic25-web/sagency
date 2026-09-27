@@ -14,7 +14,9 @@ export default function GraphicDesignSubCategoryPortfolioPage({ params }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Find target category info
-  const categoryInfo = graphicDesignCategories.find((c) => c.slug === subCategorySlug);
+  const categoryInfo = graphicDesignCategories.find(
+    (c) => c.slug === subCategorySlug || (Array.isArray(c.altSlugs) && c.altSlugs.includes(subCategorySlug))
+  );
 
   // Fetch dynamic projects from API
   useEffect(() => {
@@ -32,7 +34,9 @@ export default function GraphicDesignSubCategoryPortfolioPage({ params }) {
 
         // Merge with static fallback showcase items for this subcategory if present
         const staticFallback = graphicDesignProjects.filter(
-          (p) => p.categorySlug === subCategorySlug
+          (p) =>
+            p.categorySlug === subCategorySlug ||
+            (categoryInfo?.altSlugs && categoryInfo.altSlugs.includes(p.categorySlug))
         );
 
         const existingIds = new Set(fetchedData.map((p) => p.id));

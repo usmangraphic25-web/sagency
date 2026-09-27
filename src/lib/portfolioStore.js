@@ -117,9 +117,33 @@ export async function getProjects() {
  */
 export async function getProjectsByCategory(categorySlug) {
   const projects = await getProjects();
-  return projects.filter(
-    p => (p.categorySlug === categorySlug || p.subCategory === categorySlug) && p.status !== 'Hidden' && p.published !== false && !p.deleted
-  );
+  const slugLower = (categorySlug || '').toLowerCase().trim();
+  const isGraphic = ['graphic', 'graphic-design', 'graphic-designing'].includes(slugLower);
+  const isLogoBranding = ['logo-branding', 'logo-brand-identity'].includes(slugLower);
+
+  const GRAPHIC_SLUGS = [
+    'logo-branding', 'logo-brand-identity', 'ui-ux-design',
+    'packaging-print-design', 'social-media-ad-creatives',
+    '3d-product-design-mockups', 'shopify-store-web-graphics'
+  ];
+
+  return projects.filter(p => {
+    const statusUpper = (p.status || '').toUpperCase().trim();
+    if (statusUpper === 'HIDDEN' || p.published === false || p.deleted) return false;
+
+    const pCat = (p.categorySlug || '').toLowerCase().trim();
+    const pSub = (p.subCategory || '').toLowerCase().trim();
+    const pServ = (p.service || '').toLowerCase().trim();
+
+    if (isGraphic) {
+      return pServ.includes('graphic') || GRAPHIC_SLUGS.includes(pCat) || GRAPHIC_SLUGS.includes(pSub);
+    }
+    if (isLogoBranding) {
+      return pCat === 'logo-branding' || pCat === 'logo-brand-identity' || pSub === 'logo-branding' || pSub === 'logo-brand-identity';
+    }
+
+    return pCat === slugLower || pSub === slugLower || pServ.replace(/\s+/g, '-') === slugLower;
+  });
 }
 
 /**
@@ -163,7 +187,7 @@ export async function saveProject(rawProjectData) {
     gallery: rawMediaItems.map(m => m.url).filter(Boolean),
     tags: Array.isArray(rawProjectData.tags) ? rawProjectData.tags : (rawProjectData.tags ? String(rawProjectData.tags).split(',').map(s => s.trim()) : []),
     status: rawProjectData.status || (rawProjectData.published === false ? 'Hidden' : 'Published'),
-    published: rawProjectData.published !== false && rawProjectData.status !== 'Hidden',
+    published: rawProjectData.published !== false && (rawProjectData.status || '').toUpperCase() !== 'HIDDEN',
     featured: Boolean(rawProjectData.featured),
     displayOrder: typeof rawProjectData.displayOrder === 'number' ? rawProjectData.displayOrder : Number(rawProjectData.displayOrder) || 0,
     

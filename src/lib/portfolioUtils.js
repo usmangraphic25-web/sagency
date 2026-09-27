@@ -107,7 +107,7 @@ export function getCategoryDisplayName(project) {
   }
 
   // 2. Graphic Design Subcategories
-  if (slug === "logo-brand-identity") return "Logo & Brand Identity";
+  if (slug === "logo-brand-identity" || slug === "logo-branding") return "Logo & Branding";
   if (slug === "ui-ux-design") return "UI/UX Design";
   if (slug === "packaging-print-design") return "Packaging & Print Design";
   if (slug === "social-media-ad-creatives") return "Social Media & Ad Creatives";
@@ -124,3 +124,51 @@ export function getCategoryDisplayName(project) {
 
   return project.categoryName || project.service || project.category || "Graphic Design";
 }
+
+/**
+ * Safely resolves and validates image URLs for portfolio project cards & detail pages.
+ * Handles strings, object candidates, empty strings, relative paths, and fallbacks.
+ */
+export function getValidImageUrl(source, fallback = "/assets/portfolio-web-v4.jpg") {
+  if (!source) return fallback;
+
+  // Direct string input
+  if (typeof source === "string") {
+    const trimmed = source.trim();
+    if (!trimmed || trimmed === '""' || trimmed === "''" || trimmed === "null" || trimmed === "undefined") {
+      return fallback;
+    }
+    if (trimmed.startsWith("http://") || trimmed.startsWith("https://") || trimmed.startsWith("/")) {
+      return trimmed;
+    }
+    return fallback;
+  }
+
+  // Object input (project / case study)
+  if (typeof source === "object") {
+    const candidates = [
+      source.coverImage,
+      source.image,
+      source.thumbnail,
+      source.resultImageUrl,
+      source.mainResultImageUrl,
+      source.coverImageUrl,
+      Array.isArray(source.gallery) ? source.gallery[0] : null,
+      Array.isArray(source.mediaItems) && source.mediaItems[0] ? (source.mediaItems[0].url || source.mediaItems[0]) : null,
+    ];
+
+    for (const cand of candidates) {
+      if (cand && typeof cand === "string") {
+        const trimmed = cand.trim();
+        if (trimmed && trimmed !== '""' && trimmed !== "''" && trimmed !== "null" && trimmed !== "undefined") {
+          if (trimmed.startsWith("http://") || trimmed.startsWith("https://") || trimmed.startsWith("/")) {
+            return trimmed;
+          }
+        }
+      }
+    }
+  }
+
+  return fallback;
+}
+

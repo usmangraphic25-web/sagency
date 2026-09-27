@@ -37,123 +37,123 @@ export default CallToAction;
 export const CallToActionS = () => {
   const servicesData = [
     {
-      id: "amazon",
-      title: "Amazon Growth",
+      id: "ppc",
+      title: "PPC / Ad Management",
       problems: [
-        "High traffic but low sales",
-        "Product listing fails to convert visitors",
-        "Weak product images reduce buyer trust",
-        "A+ Content is missing or ineffective",
-        "High PPC spend with low profitability",
-        "Competitors are getting better visibility",
+        "High ACoS bleeding profits without clear returns",
+        "Wasted ad budget on non-converting search terms",
+        "Unstructured campaigns with poor keyword targeting",
+        "Inability to scale Sponsored Products & Display ads",
+        "Inefficient bidding strategies eating into margins",
+        "Competitors dominating top sponsored placements",
       ],
       solutions: [
-        "Conversion-focused Amazon listing strategy",
-        "Persuasive content built to drive purchases",
-        "High-impact product images and infographics",
-        "Engaging A+ Content that builds trust",
-        "ROI-focused PPC optimization",
-        "Keyword & competitor visibility strategies",
+        "Data-driven PPC campaign restructuring & isolation",
+        "Aggressive negative keyword harvesting to cut waste",
+        "Targeted long-tail & high-converting keyword focus",
+        "Multi-ad format strategy (Products, Brands & Display)",
+        "Profit-oriented algorithmic bid management",
+        "Top-of-search dominance for key conversion terms",
+      ],
+    },
+    {
+      id: "listing",
+      title: "Listing Images & Creatives",
+      problems: [
+        "Generic main images that fail to generate clicks",
+        "Secondary graphics that don't highlight key benefits",
+        "Outdated visuals losing sales to top competitors",
+        "Unclear product sizing, dimensions, and usage callouts",
+        "Low conversion rate despite steady listing traffic",
+        "Visuals fail to build premium brand trust",
+      ],
+      solutions: [
+        "High-CTR 2000x2000px hero image design",
+        "Persuasive feature & infographic stack visuals",
+        "Studio 3D renders & lifestyle imagery overhaul",
+        "Clear dimension maps and comparison callouts",
+        "Conversion-engineered image flow to drive orders",
+        "Premium visual branding that elevates price authority",
+      ],
+    },
+    {
+      id: "aplus",
+      title: "A+ Content / Brand Store",
+      problems: [
+        "Plain text product descriptions ignored by buyers",
+        "Missed cross-sell opportunities for related items",
+        "Weak brand story failing to create repeat customers",
+        "Lack of high-res module layouts and comparison tables",
+        "Unoptimized or missing Amazon Brand Storefront",
+        "High bounce rate on detail pages with poor trust signals",
+      ],
+      solutions: [
+        "Custom Premium A+ Content with rich visual modules",
+        "Interactive cross-sell tables boosting multi-item sales",
+        "Compelling Brand Story section building customer loyalty",
+        "High-contrast 2000px graphics with benefit badges",
+        "Immersive Amazon Brand Storefront architecture",
+        "Strong conversion architecture that keeps buyers engaged",
+      ],
+    },
+    {
+      id: "graphic",
+      title: "Graphic Design",
+      problems: [
+        "Inconsistent brand visuals failing to make an impact",
+        "Outdated product graphics losing sales to competitors",
+        "Lack of cohesive 3D renders, vector logos, and visual guides",
+        "Social media and ad creatives fail to capture attention",
+        "Product packaging fails to build premium brand authority",
+        "Brand identity looks less professional than rivals",
+      ],
+      solutions: [
+        "Consistent, high-impact brand visual identity system",
+        "3D product renders and photorealistic packaging designs",
+        "Creative vector logos, typography, and color tokens",
+        "Scroll-stopping marketing & social ad graphics",
+        "Premium packaging and print asset design suites",
+        "Elevated brand authority that drives customer trust",
       ],
     },
     {
       id: "web-dev",
-      title: "Web Development",
+      title: "Website Development",
       problems: [
-        "Outdated website design",
-        "Visitors leave without taking action",
-        "Poor mobile experience",
-        "Slow-loading pages",
-        "Website does not reflect the brand",
-        "Low visitor-to-lead conversion",
+        "Outdated website design that loses visitor trust",
+        "High mobile cart abandonment and slow page loads",
+        "Confusing site navigation with weak calls-to-action",
+        "Disconnect between Amazon brand and DTC storefront",
+        "Poor SEO structure limiting organic Google traffic",
+        "Low visitor-to-lead conversion rates",
       ],
       solutions: [
-        "Modern and professional website design",
-        "Clear user journeys and strong CTAs",
-        "Fully responsive mobile experience",
-        "Fast and optimized website performance",
-        "Custom design aligned with the brand",
-        "Conversion-focused pages built to generate leads",
+        "Modern Next.js & Shopify custom storefront design",
+        "Mobile-first responsive UX with sub-second speed",
+        "Streamlined checkout funnels and clear CTAs",
+        "Seamless brand alignment across Amazon and DTC web",
+        "Technical SEO optimization for search visibility",
+        "High-converting landing pages built for revenue",
       ],
     },
     {
-      id: "graphic-design",
-      title: "Graphic Design",
+      id: "video",
+      title: "Video Content",
       problems: [
-        "Inconsistent brand visuals",
-        "Designs fail to stand out",
-        "No clear visual identity",
-        "Inconsistent social media content",
-        "Product visuals fail to grab attention",
-        "Brand looks less professional than rivals",
+        "Product videos fail to grab attention in first 3 seconds",
+        "Generic editing that fails to show key features",
+        "Low click-through rates on Amazon Sponsored Video ads",
+        "Inconsistent visual style across video campaigns",
+        "High video production cost with poor sales returns",
+        "Videos generate views but fail to convert to sales",
       ],
       solutions: [
-        "Consistent visual identity across platforms",
-        "Creative designs that capture attention",
-        "Clear and memorable brand system",
-        "Consistent social media design direction",
-        "High-impact product and marketing visuals",
-        "Premium designs that strengthen brand image",
-      ],
-    },
-    {
-      id: "seo",
-      title: "SEO",
-      problems: [
-        "Website does not rank on Google",
-        "Low organic traffic",
-        "Competitors rank higher",
-        "Wrong keywords are being targeted",
-        "Technical SEO issues hurt visibility",
-        "Traffic does not generate enough leads",
-      ],
-      solutions: [
-        "Strategic keyword research",
-        "Organic traffic growth strategy",
-        "Competitor-based ranking strategy",
-        "High-intent keyword targeting",
-        "On-page and technical SEO optimization",
-        "SEO focused on qualified traffic and sales",
-      ],
-    },
-    {
-      id: "digital-marketing",
-      title: "Digital Marketing",
-      problems: [
-        "Marketing spend delivers unclear results",
-        "Ads reach the wrong audience",
-        "Lead generation is inconsistent",
-        "Marketing channels are disconnected",
-        "Campaign performance is difficult to track",
-        "No clear marketing strategy",
-      ],
-      solutions: [
-        "ROI-focused marketing strategy",
-        "Precise audience targeting",
-        "Consistent lead generation campaigns",
-        "Connected multi-channel marketing",
-        "Clear performance tracking and reporting",
-        "Data-driven strategy for business growth",
-      ],
-    },
-    {
-      id: "video-motion",
-      title: "Video & Motion Design",
-      problems: [
-        "Videos lose attention in the first few seconds",
-        "Content looks basic or generic",
-        "Weak storytelling and pacing",
-        "Inconsistent brand style",
-        "Motion graphics lack engagement",
-        "Videos generate views but not action",
-      ],
-      solutions: [
-        "Strong hooks designed to stop the scroll",
-        "Professional and engaging video editing",
-        "Clear storytelling and dynamic pacing",
-        "Consistent branded video style",
-        "Custom motion graphics and animations",
-        "Videos designed for engagement and conversion",
+        "Scroll-stopping hooks engineered for immediate interest",
+        "High-impact 3D product renders and commercial edits",
+        "Optimized Amazon Sponsored Video ad creatives",
+        "Consistent branded visual identity and motion graphics",
+        "Cost-effective high-ROI video production workflow",
+        "Conversion-focused video stories built for sales action",
       ],
     },
   ];
@@ -235,11 +235,11 @@ export const CallToActionS = () => {
         </div>
 
         {/* Visual Services Flow Bar — Strict Single Line Horizontal Row */}
-        <div className="w-full max-w-[970px] mx-auto mb-8 sm:mb-10 p-2 sm:p-2.5 rounded-2xl bg-[var(--card)]/80 border border-[var(--border)] relative overflow-hidden shadow-sm">
-          <div className="flex items-center justify-start md:justify-between overflow-x-auto no-scrollbar py-1 px-1 gap-1.5 sm:gap-2 font-medium w-full whitespace-nowrap flex-nowrap">
+        <div className="w-full max-w-6xl mx-auto mb-8 sm:mb-10 p-1.5 sm:p-2 md:p-2.5 rounded-2xl bg-[var(--card)]/80 border border-[var(--border)] relative overflow-hidden shadow-sm">
+          <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-0.5 px-0.5 gap-1 sm:gap-1.5 md:gap-2 font-medium w-full whitespace-nowrap flex-nowrap">
             {/* Left Arrow & Struggling Business Badge */}
             <div className="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
-              <div className="px-2.5 sm:px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 dark:text-amber-400 font-bold whitespace-nowrap text-[8.5px] sm:text-[9px] md:text-[9.5px] w-max min-w-max inline-flex items-center justify-center shrink-0">
+              <div className="px-2 sm:px-2.5 md:px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 dark:text-amber-400 font-bold whitespace-nowrap text-[8px] sm:text-[8.5px] md:text-[9px] lg:text-[9.5px] w-max min-w-max inline-flex items-center justify-center shrink-0">
                 Struggling business
               </div>
               <button
@@ -253,12 +253,12 @@ export const CallToActionS = () => {
             </div>
 
             {/* 6 Service Tabs */}
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-1.5 shrink-0">
               {servicesData.map((s, idx) => (
                 <button
                   key={s.id}
                   onClick={() => setActiveServiceIdx(idx)}
-                  className={`px-2.5 py-1 rounded-full text-[8.5px] sm:text-[9px] md:text-[9.5px] font-semibold whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer w-max min-w-max inline-flex items-center justify-center ${
+                  className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[8.5px] md:text-[9px] lg:text-[9.5px] font-semibold whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer w-max min-w-max inline-flex items-center justify-center ${
                     activeServiceIdx === idx
                       ? "bg-[var(--card-hover)] text-[#9D26FF] border border-[#9D26FF]/50 shadow-sm scale-105"
                       : "bg-[var(--card-alt)] text-[var(--foreground-muted)] hover:text-[var(--foreground-heading)] border border-[var(--border)] hover:border-[#9D26FF]/30"
@@ -279,7 +279,7 @@ export const CallToActionS = () => {
               >
                 <ArrowRight size={13} />
               </button>
-              <div className="px-2.5 sm:px-3 py-1 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/30 text-[#9D26FF] font-extrabold whitespace-nowrap text-[8.5px] sm:text-[9px] md:text-[9.5px] w-max min-w-max inline-flex items-center justify-center shrink-0">
+              <div className="px-2 sm:px-2.5 md:px-3 py-1 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/30 text-[#9D26FF] font-extrabold whitespace-nowrap text-[8px] sm:text-[8.5px] md:text-[9px] lg:text-[9.5px] w-max min-w-max inline-flex items-center justify-center shrink-0">
                 Consistent growth
               </div>
             </div>

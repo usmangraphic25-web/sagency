@@ -315,7 +315,12 @@ export default function ProjectShowcasePageView({ project }) {
                 <img src={currentMedia.url} alt={`${project.title} - Asset ${activeIndex + 1}`} className="w-full h-auto max-h-[75vh] block rounded-xl object-contain mx-auto" />
               )
             ) : (
-              <img src={currentMedia.url} alt={`${project.title} - Asset ${activeIndex + 1}`} className="w-full h-auto max-h-[75vh] block rounded-xl object-contain mx-auto" />
+              <img
+                src={currentMedia.url || "/assets/portfolio-web-v4.jpg"}
+                alt={`${project.title} - Asset ${activeIndex + 1}`}
+                onError={(e) => { e.currentTarget.src = "/assets/portfolio-web-v4.jpg"; }}
+                className="w-full h-auto max-h-[75vh] block rounded-xl object-contain mx-auto"
+              />
             )}
 
             {/* Cover Tag */}
@@ -347,7 +352,12 @@ export default function ProjectShowcasePageView({ project }) {
                   onClick={() => setActiveIndex(idx)}
                   className={`relative w-20 h-16 sm:w-24 sm:h-18 rounded-xl overflow-hidden border-2 shrink-0 transition-all ${idx === activeIndex ? "border-[#9D26FF] ring-2 ring-[#9D26FF]/50 scale-105 opacity-100" : "border-[var(--border)] opacity-60 hover:opacity-100"}`}
                 >
-                  <img src={item.url} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img
+                    src={item.url || "/assets/portfolio-web-v4.jpg"}
+                    alt={`Thumbnail ${idx + 1}`}
+                    onError={(e) => { e.currentTarget.src = "/assets/portfolio-web-v4.jpg"; }}
+                    className="w-full h-full object-cover"
+                  />
                   {idx === 0 && (
                     <span className="absolute top-0.5 left-0.5 px-1 rounded bg-amber-500 text-black text-[8px] font-bold">Cover</span>
                   )}

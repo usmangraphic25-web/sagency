@@ -24,7 +24,7 @@ function mapDbProject(p, i) {
     categorySlug = "digital-marketing";
   } else if (service.includes("video") || service.includes("motion")) {
     categorySlug = "video-editing";
-  } else if (service.includes("graphic") || ["logo-brand-identity", "ui-ux-design", "packaging-print-design", "social-media-ad-creatives", "3d-product-design-mockups", "shopify-store-web-graphics"].includes(categorySlug)) {
+  } else if (service.includes("graphic") || ["logo-brand-identity", "logo-branding", "ui-ux-design", "packaging-print-design", "social-media-ad-creatives", "3d-product-design-mockups", "shopify-store-web-graphics"].includes(categorySlug)) {
     categorySlug = "graphic-designing";
   }
 
@@ -36,7 +36,8 @@ function mapDbProject(p, i) {
     "amazon-ppc": "AMAZON · PPC",
     "3d-product-design-mockups": "GRAPHIC · 3D MOCKUPS",
     "shopify-store-web-graphics": "GRAPHIC · SHOPIFY",
-    "logo-brand-identity": "GRAPHIC · LOGO & BRAND",
+    "logo-brand-identity": "GRAPHIC · LOGO & BRANDING",
+    "logo-branding": "GRAPHIC · LOGO & BRANDING",
     "social-media-ad-creatives": "GRAPHIC · SOCIAL MEDIA",
     "packaging-print-design": "GRAPHIC · PACKAGING",
     "ui-ux-design": "GRAPHIC · UI/UX",
@@ -160,7 +161,7 @@ export default function HomePortfolio() {
         clearTimeout(timer);
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {
           const mapped = json.data
-            .filter((p) => p.status !== "Hidden" && p.published !== false && !p.deleted)
+            .filter((p) => (p.status || '').toUpperCase() !== "HIDDEN" && p.published !== false && !p.deleted)
             .map(mapDbProject);
           if (mapped.length > 0) {
             setItems(mapped);

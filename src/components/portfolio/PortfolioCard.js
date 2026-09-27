@@ -1,23 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { getProjectAspectRatioClass, getCategoryDisplayName } from "@/lib/portfolioUtils";
+import { getProjectAspectRatioClass, getCategoryDisplayName, getValidImageUrl } from "@/lib/portfolioUtils";
 
-/**
- * Derixio Portfolio Card
- *
- * Theme Colors (matching site Derixio theme):
- * - Primary Gradient: from-[#9D26FF] via-[#C084FC] to-[#7C3AED]
- * - Accent text: #C084FC
- * - Service-specific dynamic aspect ratio container (808x632 for Graphic/Amazon, 16:9 for Web/SEO/Marketing, 16:9/9:16/1:1 for Video)
- * - object-fit: cover
- * - Sharp images with ~12px rounded corners
- * - Dark surface (#0f172a / #0d1322) blending with dark background (#080b12)
- * - Show ONLY: 1. Project Title, 2. Service / Category (NO CLIENT NAME)
- * - Hover interaction: image zoom (1.04x), dark gradient overlay, purple (#9D26FF) arrow icon
- */
 export default function PortfolioCard({ project, onClick, onOpenModal, priority = false }) {
   if (!project) return null;
 
@@ -26,13 +13,16 @@ export default function PortfolioCard({ project, onClick, onOpenModal, priority 
     if (typeof onOpenModal === 'function') onOpenModal(project);
   };
 
-  // Determine cover image URL (Supabase storage or uploaded image path)
-  const coverUrl =
-    project.coverImage ||
-    project.image ||
-    (Array.isArray(project.mediaItems) && project.mediaItems[0]?.url) ||
-    (Array.isArray(project.gallery) && project.gallery[0]) ||
-    "/assets/portfolio-web-v4.jpg";
+  const defaultFallback = (project.service || "").toLowerCase().includes("amazon")
+    ? "/assets/portfolio-amazon-v4.jpg"
+    : "/assets/portfolio-web-v4.jpg";
+
+  const resolvedUrl = getValidImageUrl(project, defaultFallback);
+  const [imgSrc, setImgSrc] = useState(resolvedUrl);
+
+  useEffect(() => {
+    setImgSrc(getValidImageUrl(project, defaultFallback));
+  }, [project, defaultFallback]);
 
   // Category / Service label to display (exact subcategory mapping)
   const categoryDisplay = getCategoryDisplayName(project);
@@ -47,11 +37,12 @@ export default function PortfolioCard({ project, onClick, onOpenModal, priority 
       {/* CARD IMAGE CONTAINER - Service-specific & flexible video aspect ratio */}
       <div className={`relative w-full ${aspectClass} overflow-hidden rounded-xl bg-[var(--background)] m-1.5 mb-0 max-w-[calc(100%-12px)]`}>
         <Image
-          src={coverUrl}
+          src={imgSrc}
           alt={project.title || "Portfolio Project"}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           priority={priority}
+          onError={() => setImgSrc(defaultFallback)}
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-104"
         />
 

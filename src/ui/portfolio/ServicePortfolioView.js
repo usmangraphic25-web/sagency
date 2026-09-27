@@ -24,7 +24,7 @@ import {
   Code
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { getProjectAspectRatioClass } from "@/lib/portfolioUtils";
+import { getProjectAspectRatioClass, getValidImageUrl } from "@/lib/portfolioUtils";
 
 export default function ServicePortfolioView({ category, initialProjects }) {
   const router = useRouter();
@@ -93,7 +93,7 @@ export default function ServicePortfolioView({ category, initialProjects }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => {
               const mediaCount = project.mediaItems?.length || project.gallery?.length || 1;
-              const coverUrl = project.coverImage || project.image || '/assets/portfolio-web-v4.jpg';
+              const coverUrl = getValidImageUrl(project, '/assets/portfolio-web-v4.jpg');
               const isVideoProject = category.name === 'Video & Motion Design' || project.mediaType === 'video';
               const aspectClass = getProjectAspectRatioClass({ ...project, service: project.service || category.name });
 

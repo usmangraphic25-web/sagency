@@ -128,7 +128,7 @@ export default function AdminLeadsPage() {
     title: '',
     description: '',
     service: 'Graphic Design',
-    subCategory: 'ui-ux-design',
+    subCategory: 'logo-branding',
     client: '',
     projectUrl: '',
     featured: false,
@@ -630,7 +630,9 @@ export default function AdminLeadsPage() {
   };
 
   const handleTogglePublish = async (proj) => {
-    const newPublished = !proj.published;
+    const isCurrentlyPublished = proj.published !== false && (proj.status || '').toUpperCase() !== 'HIDDEN';
+    const newPublished = !isCurrentlyPublished;
+    const newStatus = newPublished ? 'Published' : 'Hidden';
     try {
       const res = await fetch(`/api/portfolio/projects/${proj.id}`, {
         method: 'PATCH',
@@ -639,13 +641,13 @@ export default function AdminLeadsPage() {
           authPin: getAdminPin(),
           updates: {
             published: newPublished,
-            status: newPublished ? 'Published' : 'Hidden'
+            status: newStatus
           }
         })
       });
       const data = await res.json();
       if (data.success) {
-        setProjects(prev => prev.map(p => p.id === proj.id ? { ...p, published: newPublished, status: newPublished ? 'Published' : 'Hidden' } : p));
+        setProjects(prev => prev.map(p => p.id === proj.id ? { ...p, published: newPublished, status: newStatus } : p));
       }
     } catch (err) {
       console.error('Error toggling publish state:', err);
@@ -1220,13 +1222,14 @@ export default function AdminLeadsPage() {
                           <td className="py-3 px-4">
                             <button
                               onClick={() => handleTogglePublish(proj)}
-                              className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border shadow-sm ${
-                                proj.published !== false && proj.status !== 'Hidden'
-                                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-600 dark:text-emerald-400'
-                                  : 'bg-amber-500/10 border-amber-500/40 text-amber-600 dark:text-amber-400'
+                              className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border shadow-sm transition-all cursor-pointer ${
+                                proj.published !== false && (proj.status || '').toUpperCase() !== 'HIDDEN'
+                                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
+                                  : 'bg-amber-500/10 border-amber-500/40 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20'
                               }`}
+                              title="Click to toggle visibility (Published/Visible vs Hidden)"
                             >
-                              {proj.published !== false && proj.status !== 'Hidden' ? 'Published' : 'Hidden'}
+                              {proj.published !== false && (proj.status || '').toUpperCase() !== 'HIDDEN' ? 'Visible / Published' : 'Hidden'}
                             </button>
                           </td>
                           <td className="py-3 px-4">
@@ -1354,7 +1357,7 @@ export default function AdminLeadsPage() {
                       onChange={(e) => {
                         const newService = e.target.value;
                         let defaultSub = 'amazon-listing-images';
-                        if (newService === 'Graphic Design') defaultSub = 'logo-brand-identity';
+                        if (newService === 'Graphic Design') defaultSub = 'logo-branding';
                         else if (newService === 'Web Development') defaultSub = 'web-development';
                         else if (newService === 'SEO') defaultSub = 'seo';
                         else if (newService === 'Digital Marketing') defaultSub = 'digital-marketing';

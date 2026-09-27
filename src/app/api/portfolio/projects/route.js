@@ -15,14 +15,48 @@ export async function GET(request) {
 
     if (category) {
       const catLower = category.toLowerCase().trim();
-      projects = projects.filter(p =>
-        (p.categorySlug || '').toLowerCase() === catLower ||
-        (p.subCategory || '').toLowerCase() === catLower ||
-        (p.service || '').toLowerCase().replace(/\s+/g, '-') === catLower
-      );
+      const isGraphic = ['graphic', 'graphic-design', 'graphic-designing'].includes(catLower);
+      const isLogoBranding = ['logo-branding', 'logo-brand-identity'].includes(catLower);
+
+      const GRAPHIC_SLUGS = [
+        'logo-branding', 'logo-brand-identity', 'ui-ux-design',
+        'packaging-print-design', 'social-media-ad-creatives',
+        '3d-product-design-mockups', 'shopify-store-web-graphics'
+      ];
+
+      projects = projects.filter(p => {
+        const pCat = (p.categorySlug || '').toLowerCase().trim();
+        const pSub = (p.subCategory || '').toLowerCase().trim();
+        const pServ = (p.service || '').toLowerCase().trim();
+
+        if (isGraphic) {
+          return pServ.includes('graphic') || GRAPHIC_SLUGS.includes(pCat) || GRAPHIC_SLUGS.includes(pSub);
+        }
+        if (isLogoBranding) {
+          return pCat === 'logo-branding' || pCat === 'logo-brand-identity' || pSub === 'logo-branding' || pSub === 'logo-brand-identity';
+        }
+        return (
+          pCat === catLower ||
+          pSub === catLower ||
+          pServ.replace(/\s+/g, '-') === catLower
+        );
+      });
     }
     if (status) {
-      projects = projects.filter(p => p.status === status);
+      const statusLower = status.toLowerCase().trim();
+      if (['published', 'visible', 'public'].includes(statusLower)) {
+        projects = projects.filter(p => {
+          const pStatusUpper = (p.status || '').toUpperCase().trim();
+          return p.published !== false && pStatusUpper !== 'HIDDEN' && !p.deleted;
+        });
+      } else if (statusLower === 'hidden') {
+        projects = projects.filter(p => {
+          const pStatusUpper = (p.status || '').toUpperCase().trim();
+          return pStatusUpper === 'HIDDEN' || p.published === false;
+        });
+      } else {
+        projects = projects.filter(p => (p.status || '').toLowerCase() === statusLower);
+      }
     }
 
     return NextResponse.json({ success: true, count: projects.length, data: projects });

@@ -125,7 +125,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-1 lg:space-x-2 xl:space-x-3 lg:ml-8 xl:ml-16">
+        <nav className="hidden lg:flex items-center space-x-0.5 lg:space-x-1.5 xl:space-x-3 lg:ml-4 xl:ml-10 shrink">
           {navLinks.map((link, index) => (
             <div key={index} className="relative group">
               {link.dropdown ? (
@@ -137,7 +137,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`relative flex items-center px-3.5 py-1.5 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
+                    className={`relative flex items-center px-2.5 lg:px-3 xl:px-3.5 py-1.5 text-xs lg:text-sm font-semibold transition-all duration-300 ease-in-out whitespace-nowrap ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
                       } hover:text-[#9D26FF] group-hover:bg-[var(--background-alt)] rounded-lg`}
                   >
                     {link.name}
@@ -152,7 +152,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative block px-3.5 py-1.5 text-sm font-semibold transition-all duration-300 ease-in-out ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
+                  className={`relative block px-2.5 lg:px-3 xl:px-3.5 py-1.5 text-xs lg:text-sm font-semibold transition-all duration-300 ease-in-out whitespace-nowrap ${isLinkActive(link.href) ? "text-[#9D26FF]" : "text-[var(--foreground)]"
                     } hover:text-[#9D26FF] group-hover:bg-[var(--background-alt)] rounded-lg`}
                 >
                   {link.name}
@@ -220,11 +220,11 @@ export default function Navbar() {
         </nav>
 
         {/* Compact Theme Toggle & CTA Button */}
-        <div className="hidden lg:flex items-center space-x-3">
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 shrink-0 ml-auto lg:ml-2">
           <ThemeToggle />
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2 rounded-full bg-[#9D26FF] hover:bg-[#8500ED] text-white font-semibold text-xs sm:text-sm shadow-md transition-all duration-300 cursor-pointer whitespace-nowrap h-10"
+            className="inline-flex items-center justify-center px-3.5 lg:px-4 xl:px-5 py-2 rounded-full bg-[#9D26FF] hover:bg-[#8500ED] text-white font-semibold text-xs sm:text-sm shadow-md transition-all duration-300 cursor-pointer whitespace-nowrap h-10 shrink-0"
           >
             Get Free Consultation
           </Link>

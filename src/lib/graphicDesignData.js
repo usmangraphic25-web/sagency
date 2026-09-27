@@ -1,8 +1,9 @@
 export const graphicDesignCategories = [
   {
-    id: "logo-brand-identity",
-    name: "Logo & Brand Identity",
-    slug: "logo-brand-identity",
+    id: "logo-branding",
+    name: "Logo & Branding",
+    slug: "logo-branding",
+    altSlugs: ["logo-brand-identity"],
     image: "/assets/portfolio-graphic-v4.jpg",
     description: "Vector logo marks, brand design systems, typography standards, color palettes, and corporate stationery suites.",
     projectCount: "5 Featured Projects"

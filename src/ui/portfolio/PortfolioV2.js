@@ -14,7 +14,7 @@ const FILTER_TABS = [
   { id: "ppc", label: "PPC / Ad Management" },
   { id: "listing", label: "Listing Images & Creatives" },
   { id: "aplus", label: "A+ Content / Brand Store" },
-  { id: "account", label: "Full Account Management" },
+  { id: "graphic", label: "Graphic Design" },
   { id: "webdev", label: "Website Development" },
   { id: "video", label: "Video Content" },
 ];
@@ -118,87 +118,6 @@ const PPC_CTA_TILE = {
 
 const APLUS_TILES = [
   {
-    id: "ap1",
-    title: "Nova Beauty Brand Store & A+ Suite",
-    tag: "A+ · BRAND STORE",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
-    client: "Nova Beauty",
-    metricValue: "+89%",
-    metricSub: "repeat purchases",
-    result: "Brand store & high-res A+ modules drove +89% repeat purchase rate within 60 days",
-    problem: "Outdated brand presence with low customer retention and weak visual hierarchy on detail pages.",
-    solution: "Designed 2000x2000px high-res A+ content modules and a responsive Amazon Brand Storefront.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725887393_o5p2t.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725883425_focvl.jpg",
-    ],
-  },
-  {
-    id: "ap2",
-    title: "FitGrip A+ Content & Brand Story",
-    tag: "A+ · CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
-    client: "FitGrip Athletics",
-    metricValue: "+47%",
-    metricSub: "unit session rate",
-    result: "Full A+ content redesign drove +47% unit session rate uplift",
-    problem: "Generic text bullets failed to convey 10-60kg tension engineering.",
-    solution: "Created high-contrast A+ modules featuring 2000x2000 graphics, anatomical target maps, and comparison tables.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556506876_g1cfr.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556525233_rp9g8.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556919929_pzqqk.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786556495921_7cu1j.jpg"
-    ]
-  },
-  {
-    id: "ap3",
-    title: "Pure Wellness Brand Story",
-    tag: "A+ · BRAND STORY",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
-    client: "Pure Wellness",
-    metricValue: "+32%",
-    metricSub: "glance views",
-    result: "Enhanced A+ brand story drove +32% glance views and improved trust signals",
-    problem: "Supplement listing had poor visual trust and failed to communicate solubility and daily immunity dosage.",
-    solution: "Designed bright lifestyle imagery featuring drink mixing, scoop dosage callouts, immune defense benefit stack, and third-party lab testing badges.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557191724_ufapy.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557199885_c5scd.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557174400_lpz47.jpg"
-    ]
-  },
-  {
-    id: "ap4",
-    title: "Organic Avocado Dual-Care Premium Module",
-    tag: "A+ · PREMIUM MODULE",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
-    client: "Organic Avocado Care",
-    metricValue: "2.4×",
-    metricSub: "time on listing",
-    result: "High-resolution 2000px A+ Content increased dwell time and cross-sells by 2.4×",
-    problem: "Product was losing sales to competitors because buyers could not quickly understand the dual hair & skin application benefits.",
-    solution: "Created application graphics, purity certifications, before/after texture shots, and premium packaging callouts.",
-    gallery: [
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721754953_zmk2v.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721788971_ktjnn.png",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721758483_7xs23.jpg",
-      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786721762394_lnht2.jpg"
-    ]
-  },
-  {
-    id: "ap5",
-    title: "Rosemary Hair Care Comparison Module",
-    tag: "A+ · CONTENT",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786718454739_gn66s.jpg",
-    client: "Mamaearth Care",
-    metricValue: "+51%",
-    metricSub: "cross-sell conversion",
-    result: "Interactive A+ cross-sell table boosted multi-item orders by +51%",
-  },
-  {
     id: "ap6",
     title: "Kitchen Craft Luxury Kettle Storefront",
     tag: "A+ · BRAND STORE",
@@ -230,42 +149,6 @@ const APLUS_TILES = [
   },
 ];
 
-// ─── ACCOUNT MANAGEMENT TILES ─────────────────────────────────────────────────
-
-const ACCOUNT_TILES = [
-  {
-    id: "ac1",
-    title: "Page 1 Ranking & Organic Growth",
-    tag: "ACCOUNT · FULL MANAGEMENT",
-    image: "/assets/hero-amazon.png",
-    client: "Amazon Brand Partner",
-    metricValue: "+240%",
-    metricSub: "organic sessions",
-    result: "Full account management drove product to page 1 ranking and +240% organic sessions",
-  },
-  {
-    id: "ac2",
-    title: "Brand Registry Resolution",
-    tag: "ACCOUNT · BRAND PROTECTION",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786733357398_hvysk.png",
-    client: "Amazon Brand Partner",
-    metricValue: "3 wks",
-    metricSub: "brand registry secured",
-    result: "Resolved Brand Registry complications and secured full brand protection in 3 weeks",
-    problem: "Brand Registry enrollment complications, trademark verification issues, listing hijacker vulnerability.",
-    solution: "Guided trademark process, corrected application errors, enrolled in Amazon Brand Protection tools.",
-  },
-  {
-    id: "ac3",
-    title: "Single SKU Rapid Launch",
-    tag: "ACCOUNT · LAUNCH",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786651474009_a2hyn.png",
-    client: "Amazon Brand Partner",
-    metricValue: "$6.2K",
-    metricSub: "in first 60 days",
-    result: "$6,199 in sales in first 60 days on a brand-new single-SKU product on a limited budget",
-  },
-];
 
 // ─── WEBSITE DEVELOPMENT TILES ────────────────────────────────────────────────
 
@@ -355,6 +238,43 @@ const VIDEO_TILES = [
     metricValue: "−34%",
     metricSub: "support tickets",
   },
+];
+
+// ─── GRAPHIC DESIGN TILES ───────────────────────────────────────────────────
+
+const GRAPHIC_TILES = [
+  {
+    id: "g1",
+    title: "Velox Gear Brand Identity & Packaging",
+    tag: "GRAPHIC · BRANDING",
+    image: "/assets/portfolio-graphic-v4.jpg",
+    client: "Velox Gear",
+    metricValue: "240%",
+    metricSub: "retail distribution growth",
+    result: "Full brand identity system, vector logo suite, and luxury box packaging drove +240% retail distribution growth",
+    problem: "Outdated visual identity and inconsistent packaging led to low retail buyer interest.",
+    solution: "Designed cohesive brand style guide, logo marks, typography scale, color palette, and custom packaging.",
+  },
+  {
+    id: "g2",
+    title: "AURA Wellness UI/UX Redesign",
+    tag: "GRAPHIC · UI/UX",
+    image: "/assets/portfolio/p (1).jpg",
+    client: "AURA Wellness",
+    metricValue: "-48%",
+    metricSub: "bounce rate cut",
+    result: "Clean UI/UX interface redesign reduced bounce rate by 48% and improved mobile engagement",
+  },
+  {
+    id: "g3",
+    title: "Organic Skincare Packaging & Label Suite",
+    tag: "GRAPHIC · PACKAGING",
+    image: "/assets/portfolio-amazon-v4.jpg",
+    client: "Pure Botanical",
+    metricValue: "+180%",
+    metricSub: "shelf appeal lift",
+    result: "Eco-friendly luxury print packaging suite elevated premium retail positioning",
+  }
 ];
 
 // ─── TRUST / RESULTS DATA ─────────────────────────────────────────────────────
@@ -572,6 +492,7 @@ export default function PortfolioV2() {
   const [listingImages, setListingImages] = useState(LISTING_IMAGES);
   const [ppcTiles, setPpcTiles] = useState(PPC_TILES);
   const [aplusTiles, setAplusTiles] = useState(APLUS_TILES);
+  const [graphicTiles, setGraphicTiles] = useState(GRAPHIC_TILES);
   const [webdevTiles, setWebdevTiles] = useState(WEBDEV_TILES);
   const [videoTiles, setVideoTiles] = useState(VIDEO_TILES);
 
@@ -596,7 +517,7 @@ export default function PortfolioV2() {
               id: proj.id,
               title: proj.title,
               client: proj.client || proj.brandName || "Amazon Brand Partner",
-              tag: proj.tag || proj.categoryName || proj.service?.toUpperCase() || "AMAZON · GROWTH",
+              tag: proj.tag || proj.categoryName || proj.service?.toUpperCase() || "GRAPHIC · DESIGN",
               image: cover,
               thumbnail: proj.thumbnail || cover,
               beforeImage: proj.beforeImage || "",
@@ -616,7 +537,7 @@ export default function PortfolioV2() {
           const fetchedListings = mapped.filter(t =>
             t.subCategory === 'amazon-listing-images' ||
             t.subCategory === 'listing-images' ||
-            (t.service === 'Graphic Design' && t.subCategory !== 'amazon-campaigns')
+            (t.service === 'Amazon Growth' && (t.subCategory || '').includes('listing'))
           );
 
           const fetchedPpc = mapped.filter(t =>
@@ -634,6 +555,18 @@ export default function PortfolioV2() {
             t.subCategory === 'amazon-brand-store'
           );
 
+          const GRAPHIC_SLUGS = [
+            'logo-branding', 'logo-brand-identity', 'ui-ux-design',
+            'packaging-print-design', 'social-media-ad-creatives',
+            '3d-product-design-mockups', 'shopify-store-web-graphics'
+          ];
+
+          const fetchedGraphic = mapped.filter(t =>
+            (t.service || '').toLowerCase().includes('graphic') ||
+            GRAPHIC_SLUGS.includes((t.subCategory || '').toLowerCase()) ||
+            GRAPHIC_SLUGS.includes((t.categorySlug || '').toLowerCase())
+          );
+
           const fetchedWebdev = mapped.filter(t =>
             t.service === 'Web Development' ||
             t.subCategory === 'web-development'
@@ -647,6 +580,7 @@ export default function PortfolioV2() {
           if (fetchedListings.length > 0) setListingImages(prev => [...fetchedListings, ...prev.filter(p => !fetchedListings.some(f => f.id === p.id))]);
           if (fetchedPpc.length > 0) setPpcTiles(prev => [...fetchedPpc, ...prev.filter(p => !fetchedPpc.some(f => f.id === p.id))]);
           if (fetchedAplus.length > 0) setAplusTiles(prev => [...fetchedAplus, ...prev.filter(p => !fetchedAplus.some(f => f.id === p.id))]);
+          if (fetchedGraphic.length > 0) setGraphicTiles(prev => [...fetchedGraphic, ...prev.filter(p => !fetchedGraphic.some(f => f.id === p.id))]);
           if (fetchedWebdev.length > 0) setWebdevTiles(prev => [...fetchedWebdev, ...prev.filter(p => !fetchedWebdev.some(f => f.id === p.id))]);
           if (fetchedVideo.length > 0) setVideoTiles(prev => [...fetchedVideo, ...prev.filter(p => !fetchedVideo.some(f => f.id === p.id))]);
         }
@@ -884,20 +818,32 @@ export default function PortfolioV2() {
 
                 {/* BEFORE / AFTER LISTING TILE — detached banner */}
                 <div
-                  onClick={() => LISTING_IMAGES[0] && openModal(LISTING_IMAGES[0])}
+                  onClick={() => openModal({
+                    id: "nova_shampoo",
+                    title: "Nova Shampoo · listing redesign",
+                    service: "Amazon Growth",
+                    categorySlug: "amazon-listing-images",
+                    categoryName: "Amazon Listing Images",
+                    image: "/assets/portfolio/nova_after_designed.jpg",
+                    coverImage: "/assets/portfolio/nova_after_designed.jpg",
+                    gallery: [
+                      "/assets/portfolio/nova_before_plain.jpeg",
+                      "/assets/portfolio/nova_after_designed.jpg"
+                    ]
+                  })}
                   className="flex flex-col cursor-pointer group rounded-3xl overflow-hidden border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1 bg-[var(--card)]"
                 >
                   {/* Split 50/50 image — clean, no overlays */}
                   <div className="relative flex h-[220px]">
-                    {/* Before */}
-                    <div className="w-1/2 relative overflow-hidden">
+                    {/* Before — Left Side: Plain White Bottle */}
+                    <div className="w-1/2 relative overflow-hidden bg-slate-900">
                       <Image
-                        src="/assets/portfolio/nova_before.jpeg"
-                        alt="Before listing redesign"
+                        src="/assets/portfolio/nova_before_plain.jpeg"
+                        alt="Before listing redesign - Plain white bottle"
                         fill
-                        className="object-cover brightness-50 group-hover:brightness-60 group-hover:scale-105 transition-all duration-700"
+                        className="object-cover group-hover:scale-105 transition-all duration-700"
                       />
-                      <div className="absolute top-3 left-3">
+                      <div className="absolute top-3 left-3 z-10">
                         <span
                           className="text-[10px] font-mono font-black text-white uppercase tracking-widest px-2.5 py-1 rounded-md"
                           style={{ background: "rgba(0,0,0,0.85)" }}
@@ -906,15 +852,15 @@ export default function PortfolioV2() {
                         </span>
                       </div>
                     </div>
-                    {/* After */}
-                    <div className="w-1/2 relative overflow-hidden border-l-2 border-[#9D26FF]">
+                    {/* After — Right Side: Designed Nova Packaging */}
+                    <div className="w-1/2 relative overflow-hidden border-l-2 border-[#9D26FF] bg-slate-900">
                       <Image
-                        src={LISTING_IMAGES[0]?.image || "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786725904601_gmv11.jpg"}
-                        alt="After listing redesign"
+                        src="/assets/portfolio/nova_after_designed.jpg"
+                        alt="After listing redesign - Designed Nova packaging"
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute top-3 right-3">
+                      <div className="absolute top-3 right-3 z-10">
                         <span
                           className="text-[10px] font-mono font-black text-white uppercase tracking-widest px-2.5 py-1 rounded-md"
                           style={{ background: "rgba(157,38,255,0.95)" }}
@@ -1300,11 +1246,11 @@ export default function PortfolioV2() {
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* FULL ACCOUNT MANAGEMENT SECTION                                       */}
+      {/* GRAPHIC DESIGN SECTION                                                */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {show("account") && (
+      {show("graphic") && (
         <motion.div
-          key="account"
+          key="graphic"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -1312,34 +1258,32 @@ export default function PortfolioV2() {
         >
           <div className="max-w-7xl mx-auto">
             <SectionHeader
-              badge="Full Account Management"
-              title="End-to-end Amazon management"
-              description="From launch to ranking, brand protection to sustained growth — complete Amazon account ownership."
+              badge="Graphic Design · Brand Identity"
+              title="Visual systems that elevate brands"
+              description="Logo & brand identity design, UI/UX design, packaging, 3D mockups, and social media creatives."
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-              {/* ROW 1 — Text intro card (left) + Large tile (right, col-span-2) */}
-
-              {/* Text card 1 — top-left */}
+              {/* Text intro card */}
               <div className="relative rounded-3xl bg-gradient-to-br from-[#9D26FF]/14 via-[var(--card)] to-[var(--card)] border border-[#9D26FF]/25 p-7 flex flex-col justify-between overflow-hidden hover:border-[#9D26FF] hover:-translate-y-1 transition-all duration-300 shadow-lg min-h-[260px] group">
                 <div className="absolute -top-8 -right-8 w-36 h-36 rounded-full bg-[#9D26FF]/10 blur-2xl pointer-events-none group-hover:bg-[#9D26FF]/18 transition-colors duration-500" />
                 <div className="relative z-10">
-                  <span className="font-mono text-[9px] font-bold text-[#9D26FF] tracking-widest uppercase block mb-3">ACCOUNT · SERVICE</span>
+                  <span className="font-mono text-[9px] font-bold text-[#9D26FF] tracking-widest uppercase block mb-3">GRAPHIC · CREATIVE STUDIO</span>
                   <h3 className="text-base font-extrabold text-[var(--foreground-heading)] leading-snug mb-3">
-                    Full ownership. Real outcomes.
+                    Premium branding & visual design.
                   </h3>
-                  <p className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                    We manage listings, PPC, inventory, brand protection, and growth strategy — so you can focus on your product while we handle Amazon end-to-end.
+                  <p className="text-xs text-[var(--foreground-muted)] leading-relaxed mb-4">
+                    From brand identity and vector logo suites to high-converting UI/UX and product packaging — we build visual systems that leave lasting impressions.
                   </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Logo & Branding", "UI/UX", "Packaging", "3D Mockups"].map((p) => (
+                      <span key={p} className="px-2.5 py-1 rounded-full text-[9px] font-mono font-bold text-[#9D26FF] border border-[#9D26FF]/30 bg-[#9D26FF]/8 tracking-wider">{p}</span>
+                    ))}
+                  </div>
                 </div>
                 <div className="relative z-10 mt-5">
-                  <div className="flex items-end gap-2 mb-4">
-                    <span className="text-4xl font-black text-[#9D26FF] leading-none tracking-tight">15+</span>
-                    <span className="text-[10px] text-[var(--foreground-muted)] mb-1 leading-tight">Amazon brands fully managed</span>
-                  </div>
                   <div className="h-px w-full bg-[var(--border)] mb-4" />
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#9D26FF]">End-to-end management</span>
+                    <span className="text-xs font-bold text-[#9D26FF]">View All Design Projects</span>
                     <div className="w-8 h-8 rounded-full bg-[#9D26FF] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <ArrowUpRight size={14} />
                     </div>
@@ -1347,43 +1291,16 @@ export default function PortfolioV2() {
                 </div>
               </div>
 
-              {/* Large image tile — right, spans 2 cols */}
-              <LargeTile tile={ACCOUNT_TILES[0]} onClick={() => openModal(ACCOUNT_TILES[0])} />
-
-              {/* ROW 2 — Brand Registry small tile + SKU Launch small tile + Text stat card */}
-              <SmallTile tile={ACCOUNT_TILES[1]} onClick={() => openModal(ACCOUNT_TILES[1])} />
-              <SmallTile tile={ACCOUNT_TILES[2]} onClick={() => openModal(ACCOUNT_TILES[2])} />
-
-              {/* Text card 2 — bottom-right stat highlight */}
-              <div className="relative rounded-3xl bg-[var(--card)] border border-[var(--border)] p-7 flex flex-col justify-between overflow-hidden hover:border-[#9D26FF] hover:-translate-y-1 transition-all duration-300 shadow-lg min-h-[260px] group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#9D26FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                <div className="relative z-10">
-                  <span className="font-mono text-[9px] font-bold text-[#9D26FF] tracking-widest uppercase block mb-3">ACCOUNT · GROWTH</span>
-                  <h3 className="text-sm font-extrabold text-[var(--foreground-heading)] leading-snug mb-2">
-                    From launch to page 1 — we've done it on every budget.
-                  </h3>
-                  <p className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                    Brand registry resolved in 3 weeks. New SKU generating sales in 60 days. Page 1 ranking with +240% organic growth.
-                  </p>
-                </div>
-                <div className="relative z-10 mt-5">
-                  <div className="flex items-end gap-2 mb-4">
-                    <span className="text-4xl font-black text-[#9D26FF] leading-none tracking-tight">£54K</span>
-                    <span className="text-[10px] text-[var(--foreground-muted)] mb-1 leading-tight">new brand on limited budget</span>
-                  </div>
-                  <div className="h-px w-full bg-[var(--border)] mb-4" />
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#9D26FF]">See all account results</span>
-                    <div className="w-8 h-8 rounded-full bg-[#9D26FF]/10 border border-[#9D26FF]/30 text-[#9D26FF] flex items-center justify-center group-hover:bg-[#9D26FF] group-hover:text-white transition-all duration-300">
-                      <ArrowUpRight size={14} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Large & Small tiles */}
+              {graphicTiles.length > 0 && <LargeTile tile={graphicTiles[0]} onClick={() => openModal(graphicTiles[0])} />}
+              {graphicTiles.slice(1).map((tile) => (
+                <SmallTile key={tile.id} tile={tile} onClick={() => openModal(tile)} />
+              ))}
             </div>
           </div>
         </motion.div>
       )}
+
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* WEBSITE DEVELOPMENT SECTION                                           */}

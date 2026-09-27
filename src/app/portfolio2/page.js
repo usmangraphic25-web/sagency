@@ -11,7 +11,7 @@ import Portfolio2Content from "./_Portfolio2Content";
 export const metadata = {
   title: "Portfolio v2 – Amazon Growth, Listing Design & Brand Services | Derixio",
   description:
-    "Explore Derixio's results-first portfolio: Amazon PPC case studies (ACoS 181%→49%), listing image redesigns, A+ content, full account management, web development, and video production.",
+    "Explore Derixio's results-first portfolio: Amazon PPC case studies (ACoS 181%→49%), listing image redesigns, A+ content, web development, and video production.",
   alternates: {
     canonical: "https://www.derixio.com/portfolio2",
   },
