@@ -127,26 +127,6 @@ const APLUS_TILES = [
     metricSub: "brand store visits",
     result: "Custom Amazon Storefront drove 3.1× brand store visits and elevated premium perception",
   },
-  {
-    id: "ap7",
-    title: "SkinCare Essentials Exfoliation Routine A+",
-    tag: "A+ · BRAND STORY",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786625429845_kutez.jpg",
-    client: "SkinCare Essentials",
-    metricValue: "+41%",
-    metricSub: "AOV increase",
-    result: "Comprehensive routine infographic module increased Average Order Value by +41%",
-  },
-  {
-    id: "ap8",
-    title: "Pure Immunity Powder High-Res Module",
-    tag: "A+ · PREMIUM MODULE",
-    image: "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1786557170289_zj7lp.jpg",
-    client: "Pure Wellness",
-    metricValue: "+63%",
-    metricSub: "organic conversions",
-    result: "Ultra high-res 2000px ingredient transparency module drove +63% conversion lift",
-  },
 ];
 
 
@@ -634,17 +614,18 @@ export default function PortfolioV2() {
           </div>
 
           {/* H1 — big, dramatic, gradient */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl text-center font-black leading-[1.12] tracking-tight mb-5 sm:mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl text-center font-black leading-[1.25] tracking-tight mb-5 sm:mb-6 overflow-visible py-1">
             {/* "Every partner," — light weight like other pages */}
             <span className="font-light text-[var(--foreground-heading)] opacity-90">Every partner,</span>
             <br className="leading-[1.4]" />
             <span
-              className="inline-block"
+              className="inline-block pb-3 pt-1"
               style={{
                 background: "linear-gradient(135deg, #9D26FF 0%, #C084FC 50%, #9D26FF 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                paddingBottom: "0.18em",
               }}
             >
               one growth story.
