@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -18,6 +18,20 @@ const FILTER_TABS = [
   { id: "webdev", label: "Website Development" },
   { id: "video", label: "Video Content" },
 ];
+
+const normalizeCategoryParam = (param) => {
+  if (!param) return "all";
+  const lower = param.toLowerCase().trim();
+  if (lower === "all") return "all";
+  if (lower.includes("ppc") || lower.includes("ad management")) return "ppc";
+  if (lower.includes("listing")) return "listing";
+  if (lower.includes("aplus") || lower.includes("a+") || lower.includes("brand store")) return "aplus";
+  if (lower.includes("graphic")) return "graphic";
+  if (lower.includes("web") || lower.includes("dev")) return "webdev";
+  if (lower.includes("video")) return "video";
+  const matchedTab = FILTER_TABS.find(tab => tab.id === lower || tab.label.toLowerCase() === lower);
+  return matchedTab ? matchedTab.id : "all";
+};
 
 // ─── HERO STATS ───────────────────────────────────────────────────────────────
 
@@ -465,8 +479,31 @@ function SmallTile({ tile, onClick, scrollScreenshot = false }) {
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function PortfolioV2() {
+  const searchParams = useSearchParams();
   const [activeFilter, setActiveFilter] = useState("all");
   const router = useRouter();
+
+  useEffect(() => {
+    const cat = searchParams ? (searchParams.get("category") || searchParams.get("fromCategory")) : null;
+    if (cat) {
+      setActiveFilter(normalizeCategoryParam(cat));
+    }
+  }, [searchParams]);
+
+  const handleFilterChange = (id) => {
+    setActiveFilter(id);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (id === "all") {
+        url.searchParams.delete("category");
+        url.searchParams.delete("fromCategory");
+      } else {
+        url.searchParams.set("category", id);
+        url.searchParams.delete("fromCategory");
+      }
+      window.history.replaceState(null, "", url.toString());
+    }
+  };
 
   // Dynamic portfolio project states initialized with rich default fallbacks
   const [listingImages, setListingImages] = useState(LISTING_IMAGES);
@@ -574,7 +611,7 @@ export default function PortfolioV2() {
   /* Open project page helper */
   const openModal = (tile) => {
     if (tile.id) {
-      router.push(`/portfolio/project/${tile.id}`);
+      router.push(`/portfolio/project/${tile.id}?fromCategory=${activeFilter}`);
     }
   };
 
@@ -662,7 +699,7 @@ export default function PortfolioV2() {
                 <button
                   key={tab.id}
                   id={`portfolio2-filter-${tab.id}`}
-                  onClick={() => setActiveFilter(tab.id)}
+                  onClick={() => handleFilterChange(tab.id)}
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer shrink-0 ${activeFilter === tab.id
                     ? "bg-[#9D26FF] text-white shadow-lg shadow-[#9D26FF]/30 scale-105"
                     : "bg-[var(--card)] text-[var(--foreground-muted)] border border-[var(--border)] hover:border-[#9D26FF] hover:text-[#9D26FF]"
@@ -1392,7 +1429,7 @@ export default function PortfolioV2() {
               {videoTiles.map((vid) => (
                 <div
                   key={vid.id}
-                  onClick={() => vid.id && router.push(`/portfolio/project/${vid.id}`)}
+                  onClick={() => vid.id && openModal(vid)}
                   className="group relative rounded-3xl overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[#9D26FF] transition-all duration-300 shadow-xl hover:-translate-y-1"
                 >
                   {/* Thumbnail + play */}

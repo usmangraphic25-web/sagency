@@ -420,7 +420,7 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
                   exit={{ opacity: 0, x: -direction * 40, scale: 0.98 }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   className="group relative rounded-3xl overflow-hidden bg-[var(--card)] border border-[#9D26FF]/80 ring-2 ring-[#9D26FF]/20 shadow-2xl shadow-purple-950/40 cursor-pointer"
-                  onClick={() => activeProject.id && router.push(`/portfolio/project/${activeProject.id}`)}
+                  onClick={() => activeProject.id && router.push(`/portfolio/project/${activeProject.id}?fromCategory=${activeProject.categorySlug || "all"}`)}
                 >
                   {/* Spotlight Image Box — capped at max-h-[440px] while maintaining aspect-[1418/1109] */}
                   <div className="relative w-full aspect-[1418/1109] max-h-[420px] sm:max-h-[450px] overflow-hidden bg-black/80">
@@ -475,7 +475,7 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            if (activeProject.id) router.push(`/portfolio/project/${activeProject.id}`);
+                            if (activeProject.id) router.push(`/portfolio/project/${activeProject.id}?fromCategory=${activeProject.categorySlug || "all"}`);
                           }}
                           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-extrabold shadow-2xl hover:bg-[#9D26FF] hover:text-white transition-colors duration-200 cursor-pointer"
                         >

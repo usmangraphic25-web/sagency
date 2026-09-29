@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   X,
   ExternalLink,
@@ -15,11 +15,17 @@ import {
 } from "lucide-react";
 
 // Helper function to return customized 5-step workflow strategy per category
-const getWorkflowData = (category, title) => {
-  const catLower = (category || "").toLowerCase();
-  const titleLower = (title || "").toLowerCase();
+const getWorkflowData = (project) => {
+  const catName = (project.categoryName || "").toLowerCase();
+  const service = (project.service || "").toLowerCase();
+  const subCat = (project.subCategory || project.categorySlug || "").toLowerCase();
+  const tag = (project.tag || "").toLowerCase();
+  const title = (project.title || "").toLowerCase();
 
-  if (catLower.includes("ppc") || titleLower.includes("ppc") || titleLower.includes("acos")) {
+  const combined = `${catName} ${service} ${subCat} ${tag} ${title}`;
+
+  // 1. PPC / Ad Management
+  if (combined.includes("ppc") || combined.includes("ad management") || combined.includes("campaign") || combined.includes("acos")) {
     return {
       badge: "OUR PPC WORKFLOW",
       title: "How We Execute Amazon PPC & Ad Strategy",
@@ -34,7 +40,8 @@ const getWorkflowData = (category, title) => {
     };
   }
 
-  if (catLower.includes("web") || catLower.includes("dev") || catLower.includes("code")) {
+  // 2. Website Development
+  if (combined.includes("web") || combined.includes("dev") || combined.includes("shopify") || combined.includes("next.js") || combined.includes("wordpress") || combined.includes("saas")) {
     return {
       badge: "OUR DEV WORKFLOW",
       title: "How We Execute Website & Digital Platforms",
@@ -49,6 +56,55 @@ const getWorkflowData = (category, title) => {
     };
   }
 
+  // 3. A+ Content / Brand Store
+  if (combined.includes("a-plus") || combined.includes("a+") || combined.includes("brand store") || combined.includes("aplus") || combined.includes("premium module") || combined.includes("kettle storefront")) {
+    return {
+      badge: "OUR A+ CONTENT WORKFLOW",
+      title: "How We Execute A+ Content & Brand Stores",
+      subtitle: "A strategic visual storytelling framework that builds brand equity, elevates product perception, and drives repeat revenue.",
+      steps: [
+        { num: "01", title: "Brand & Module Strategy", desc: "Audit competitor brand stores, define module hierarchy, and establish visual storytelling goals." },
+        { num: "02", title: "Content & Layout Wireframing", desc: "Structure comparison charts, brand story modules, feature carousels, and high-res image slots." },
+        { num: "03", title: "High-Res Creative Design", desc: "Design 2000px ultra high-resolution custom graphics, lifestyle banners, and infographic modules." },
+        { num: "04", title: "Mobile & Desktop Optimization", desc: "Optimize layout responsiveness across mobile Seller Central previews and desktop storefronts." },
+        { num: "05", title: "Amazon Upload & Approval", desc: "Prepare Amazon Seller/Vendor Central specs, upload module assets, and finalize live publication." },
+      ],
+    };
+  }
+
+  // 4. Video Content
+  if (combined.includes("video") || combined.includes("motion") || combined.includes("commercial") || combined.includes("film") || combined.includes("3d animation") || combined.includes("explainer") || combined.includes("reel")) {
+    return {
+      badge: "OUR VIDEO PRODUCTION WORKFLOW",
+      title: "How We Execute Video Content & Motion Design",
+      subtitle: "A high-impact video creative pipeline designed for Amazon Sponsored Video ads, product explainer reels, and 3D kinetic motion.",
+      steps: [
+        { num: "01", title: "Concept & Scriptwriting", desc: "Analyze product USP, craft high-converting video scripts, and write engaging visual storyboards." },
+        { num: "02", title: "Storyboarding & 3D Pre-Vis", desc: "Plan camera angles, kinetic typography, 3D exploded views, and product animation keyframes." },
+        { num: "03", title: "Production & Motion Design", desc: "Film cinematic footage or render photorealistic 3D particle motion graphics and product renders." },
+        { num: "04", title: "Post-Production & Audio", desc: "Edit fast-paced cuts, integrate motion graphics text overlays, color grade, and mix sound design." },
+        { num: "05", title: "Ad Optimization & Export", desc: "Format video aspect ratios for Amazon Sponsored Video, Meta Reels, and high-CTR ad channels." },
+      ],
+    };
+  }
+
+  // 5. Graphic Design & Brand Identity
+  if (combined.includes("graphic") || combined.includes("branding") || combined.includes("packaging") || combined.includes("ui/ux") || combined.includes("logo") || combined.includes("3d mockup") || combined.includes("label suite")) {
+    return {
+      badge: "OUR GRAPHIC DESIGN WORKFLOW",
+      title: "How We Execute Graphic Design & Brand Identity",
+      subtitle: "A comprehensive design system workflow crafting scalable logos, packaging suites, UI/UX interfaces, and digital visual assets.",
+      steps: [
+        { num: "01", title: "Discovery & Brand Identity", desc: "Uncover core brand values, target audience aesthetics, moodboards, and competitive visual positioning." },
+        { num: "02", title: "Concepting & Vector Design", desc: "Sketch raw logo concepts, develop vector logomarks, typography scales, and cohesive color palettes." },
+        { num: "03", title: "Packaging & 3D Mockups", desc: "Design print-ready die-lines, luxury packaging labels, and 3D realistic product render mockups." },
+        { num: "04", title: "UI/UX & Digital Assets", desc: "Craft responsive web interface layouts, social media ad creatives, and digital marketing graphics." },
+        { num: "05", title: "Style Guide & Brand Delivery", desc: "Deliver full vector source files (AI, EPS, SVG, PNG), brand style guidelines, and print specs." },
+      ],
+    };
+  }
+
+  // 6. Default: Amazon Listing Images & Creatives
   return {
     badge: "OUR LISTING WORKFLOW",
     title: "How We Execute Amazon Listing Images",
@@ -65,10 +121,18 @@ const getWorkflowData = (category, title) => {
 
 export default function ProjectShowcasePageView({ project }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const fromCategory = searchParams ? (searchParams.get("fromCategory") || searchParams.get("category")) : null;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleBack = () => {
-    router.back();
+    if (fromCategory && fromCategory !== "all") {
+      router.push(`/portfolio?category=${fromCategory}`);
+    } else if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/portfolio");
+    }
   };
 
   // Process project media items & gallery with robust JSON parsing
@@ -145,7 +209,7 @@ export default function ProjectShowcasePageView({ project }) {
   }
 
   const hasBreakdown = prob || sol || res || project.caseStudyDetails;
-  const wf = getWorkflowData(displayCategory, project.title);
+  const wf = getWorkflowData(project);
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">

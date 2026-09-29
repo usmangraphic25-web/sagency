@@ -226,7 +226,7 @@ export default function HomePortfolio() {
                 key={item.id}
                 item={item}
                 index={i}
-                onClick={() => router.push(`/portfolio/project/${item.id}`)}
+                onClick={() => router.push(`/portfolio/project/${item.id}?fromCategory=${item.categorySlug || "all"}`)}
               />
             ))}
           </div>
