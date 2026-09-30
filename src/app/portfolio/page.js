@@ -4,6 +4,7 @@
  * Exports metadata and injects CollectionPage + portfolio ItemList JSON-LD.
  * Interactive gallery UI rendered by _PortfolioContent (client component).
  */
+import React, { Suspense } from "react";
 import PortfolioContent from "./_PortfolioContent";
 import { serviceCategoryCards } from "@/lib/portfolioData";
 import {
@@ -91,7 +92,9 @@ export default function PortfolioPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PortfolioContent />
+      <Suspense fallback={<div className="min-h-screen bg-[var(--background)]" />}>
+        <PortfolioContent />
+      </Suspense>
     </>
   );
 }

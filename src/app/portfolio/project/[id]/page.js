@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { getProjects } from "@/lib/portfolioStore";
 import { notFound } from "next/navigation";
 import ProjectShowcasePageView from "@/components/portfolio/ProjectShowcasePageView";
@@ -26,5 +27,9 @@ export default async function ProjectPage({ params }) {
     notFound();
   }
 
-  return <ProjectShowcasePageView project={project} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[var(--background)]" />}>
+      <ProjectShowcasePageView project={project} />
+    </Suspense>
+  );
 }
