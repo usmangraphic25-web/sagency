@@ -48,9 +48,6 @@ const ProcessSection = ({ process = [] }) => {
                   <span className="text-3xl font-black text-[#9D26FF]">
                     {stepItem.step || `0${index + 1}`}
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--foreground-muted)] px-2.5 py-1 rounded-full bg-[var(--background-alt)] border border-[var(--border)]">
-                    Step {index + 1}
-                  </span>
                 </div>
 
                 <h3 className="text-lg font-bold text-[var(--foreground-heading)] group-hover:text-[#9D26FF] transition-colors mb-3">

@@ -12,7 +12,7 @@ import { Play, Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-
 const FILTER_TABS = [
   { id: "all", label: "All" },
   { id: "ppc", label: "PPC / Ad Management" },
-  { id: "listing", label: "Listing Images & Creatives" },
+  { id: "listing", label: "Listing Images" },
   { id: "aplus", label: "A+ Content / Brand Store" },
   { id: "graphic", label: "Graphic Design" },
   { id: "webdev", label: "Website Development" },
@@ -1058,7 +1058,7 @@ export default function PortfolioV2() {
         >
           <div className="max-w-7xl mx-auto">
             <SectionHeader
-              badge="Listing Images & Creatives"
+              badge="Listing Images"
               title="Conversion-focused listing images"
               description="Strategic visual storytelling and high-impact product graphics engineered to showcase key benefits, overcome buyer objections, and maximize click-through and conversion rates."
             />

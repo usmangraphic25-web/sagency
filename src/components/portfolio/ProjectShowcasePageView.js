@@ -104,7 +104,7 @@ const getWorkflowData = (project) => {
     };
   }
 
-  // 6. Default: Amazon Listing Images & Creatives
+  // 6. Default: Amazon Listing Images
   return {
     badge: "OUR LISTING WORKFLOW",
     title: "How We Execute Amazon Listing Images",

@@ -1,4 +1,4 @@
-import { Zap, ShieldCheck, BarChart, Code, Search, ShoppingCart, Film, TrendingUp, Palette } from 'lucide-react';
+import { Zap, ShieldCheck, BarChart, Code, Search, ShoppingCart, Film, TrendingUp, Palette, Store } from 'lucide-react';
 
 export const iconMap = {
   Code,
@@ -10,6 +10,7 @@ export const iconMap = {
   Film,
   TrendingUp,
   Palette,
+  Store,
 };
 
 export const servicesData = [
@@ -86,7 +87,7 @@ export const servicesData = [
       {
         title: "Amazon Storefront Design",
         description: "Custom Amazon brand storefront design that elevates brand authority and drives multi-product customer browsing.",
-        icon: "ShoppingCart"
+        icon: "Store"
       },
       {
         title: "Amazon PPC & Advertising",
@@ -147,7 +148,7 @@ export const servicesData = [
   {
     title: "Web Development",
     slug: "web-development",
-    subtitle: "Blazing-fast, SEO-optimized web applications built on modern frameworks like Next.js and React.",
+    subtitle: "Fast, SEO-friendly websites and web apps built with Next.js and React, so your brand has a strong home beyond Amazon.",
     badge: "Full-Stack Web Engineering",
     metrics: [
       { value: "99.8%", label: "Core Web Vitals" },
@@ -362,7 +363,7 @@ export const servicesData = [
       {
         title: "Packaging & Print Design",
         description: "Professional product packaging, labels, brochures, and print marketing materials.",
-        icon: "CheckCircle2"
+        icon: "ShieldCheck"
       },
       {
         title: "UI/UX Design",
@@ -501,7 +502,7 @@ export const servicesData = [
       {
         title: "Local SEO",
         description: "Optimize Google Business Profile and dominate local searches.",
-        icon: "CheckCircle2"
+        icon: "Globe"
       },
       {
         title: "Analytics & Reporting",
@@ -738,29 +739,29 @@ export const servicesData = [
     icon: "Film",
     features: [
       {
-        title: "Social Media Video Editing",
-        description: "Professional short-form and long-form videos for Instagram, Facebook, TikTok, LinkedIn, and YouTube. Includes engaging edits, captions, transitions, and platform-optimized content designed to increase reach and engagement.",
-        icon: "Film"
+        title: "Amazon Video Editing",
+        description: "Product videos built for Amazon listings and Amazon Video Ads, sized and paced to hold attention and support conversions.",
+        icon: "ShoppingBag"
       },
       {
         title: "Ad Creative Videos",
-        description: "High-converting promotional videos for Meta Ads, Google Ads, TikTok Ads, Amazon Ads, and eCommerce campaigns. Designed to capture attention, improve click-through rates, and maximize conversions.",
+        description: "Short promotional videos for Meta, Google, TikTok, and Amazon Ads, designed to capture attention and improve click-through rates.",
         icon: "Zap"
       },
       {
+        title: "Social Media Video Editing",
+        description: "Short-form and long-form videos for Instagram, Facebook, TikTok, LinkedIn, and YouTube, with captions and platform-ready formatting.",
+        icon: "Film"
+      },
+      {
         title: "Motion Graphics",
-        description: "2D and 3D animated graphics, kinetic typography, animated logos, and visual effects that make your videos look professional and engaging.",
-        icon: "BarChart"
+        description: "2D and 3D animation, kinetic typography, animated logos, and visual effects that give your videos a polished look.",
+        icon: "Sparkles"
       },
       {
         title: "Brand & Promotional Videos",
-        description: "High-quality brand stories, corporate videos, product teasers, and promotional content designed to build trust and elevate your brand image.",
-        icon: "ShieldCheck"
-      },
-      {
-        title: "Amazon Video Editing",
-        description: "High-converting product videos optimized for Amazon listings and Amazon Video Ads to boost conversions.",
-        icon: "ShoppingCart"
+        description: "Brand stories, corporate videos, and product teasers that build trust and strengthen your brand image.",
+        icon: "Play"
       }
     ],
     pricingPlans: [

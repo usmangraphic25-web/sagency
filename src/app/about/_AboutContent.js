@@ -25,7 +25,7 @@ const AboutPage = () => {
           >
             <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[var(--background-alt)] border border-[var(--border)] text-[#9D26FF] text-xs font-bold uppercase tracking-widest mb-4">
               <Sparkles size={14} className="text-[#9D26FF]" />
-              <span>ABOUT DERIXIO DIGITAL AGENCY</span>
+              <span>ABOUT DERIXIO</span>
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-7xl text-[var(--foreground-heading)] leading-tight tracking-tight">
               <span className="font-light">Engineering Digital </span>
@@ -218,17 +218,17 @@ const AboutPage = () => {
               {
                 icon: Sparkles,
                 title: "Creative Excellence",
-                description: "We blend artistic design with robust technical architecture to create digital platforms that command attention."
+                description: "We combine strong design with technical skill to create listings, brands, and websites that stand out."
               },
               {
                 icon: Target,
                 title: "Results Focused",
-                description: "Every deployment is designed with performance metrics in mind, ensuring clear ROI and scalable growth."
+                description: "Every project is planned around clear performance metrics, so you can see the return on your investment."
               },
               {
                 icon: Users,
                 title: "Strategic Partnership",
-                description: "We collaborate as a dedicated extension of your team, providing transparent, ongoing development and support."
+                description: "We work as an extension of your team, with open communication and ongoing support."
               }
             ].map((item, index) => (
               <motion.div

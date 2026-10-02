@@ -30,12 +30,9 @@ export default function AmazonPpcProvenResults() {
           <Sparkles size={12} className="text-[#9D26FF]" />
           <span>PROVEN RESULTS</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground-heading)] tracking-tight mb-2">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground-heading)] tracking-tight">
           Real Performance Across <span className="text-[#9D26FF]">Amazon PPC</span>
         </h2>
-        <p className="text-xs sm:text-sm font-semibold text-[var(--foreground-muted)]">
-          Management fee based on ad spend
-        </p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">

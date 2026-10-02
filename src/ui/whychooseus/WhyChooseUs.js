@@ -3,7 +3,6 @@ import {
   Layers,
   UserCheck,
   TrendingUp,
-  Globe,
   Sparkles,
   ArrowRight,
 } from 'lucide-react';
@@ -85,7 +84,7 @@ const WhyChooseUs = () => {
                 <span className="font-extrabold">Everywhere Else.</span>
               </h2>
               <p className="text-[var(--foreground-muted)] mt-4 text-xs sm:text-sm leading-relaxed">
-                We combine Amazon expertise with full-stack execution — websites, branding, SEO, video, and marketing — so your brand grows on every channel it needs.
+                We pair deep Amazon expertise with full-stack execution: websites, branding, SEO, video, and marketing. Your brand grows on every channel it needs.
               </p>
             </motion.div>
 
@@ -141,33 +140,27 @@ export default WhyChooseUs;
 const features = [
   {
     icon: ShoppingBag,
-    title: 'Amazon-Trained Expertise',
-    description: 'We know what moves the needle on Amazon — optimized listings, A+ Content, and ROI-focused ads that convert.',
+    title: 'Amazon Specialists',
+    description: 'We know how Amazon works. Optimized listings, A+ Content, and ROI-focused ads built to turn clicks into sales.',
     className: 'lg:col-span-4',
   },
   {
     icon: Layers,
     title: 'Full-Stack Execution',
-    description: 'Beyond Amazon, we build the websites, branding, SEO, and marketing your business needs to grow everywhere.',
+    description: 'Beyond Amazon, we build the websites, branding, SEO, and marketing your business needs to grow on every channel.',
     className: 'lg:col-span-4',
   },
   {
     icon: UserCheck,
     title: 'Direct Founder Access',
-    description: 'You work directly with the founders — no account managers, no delays, just clear communication.',
+    description: 'You work directly with the founders. No account managers, no delays, just clear communication.',
     className: 'md:col-span-2 lg:col-span-8',
     highlighted: true,
   },
   {
     icon: TrendingUp,
     title: 'Results-Driven Delivery',
-    description: 'We focus on measurable outcomes — rankings, conversions, and sales — not vanity metrics or buzzwords.',
-    className: 'lg:col-span-4',
-  },
-  {
-    icon: Globe,
-    title: 'One Team, Every Channel',
-    description: 'From your Amazon store to your website and social presence, one team handles it all — consistent branding, no coordination headaches.',
+    description: 'We focus on measurable outcomes: rankings, conversions, and sales. No vanity metrics, no buzzwords.',
     className: 'lg:col-span-4',
   },
 ];

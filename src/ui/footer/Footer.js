@@ -114,7 +114,7 @@ const Footer = () => {
                   className="mb-4 h-auto w-[115px] md:w-[130px] object-contain logo-dark-mode hidden dark:block" 
                 />
                 <p className="text-[var(--foreground-muted)] leading-relaxed mb-6 text-sm">
-                  Derixio is a premier digital innovation agency specializing in high-performance web development, brand design, and AI-powered growth solutions.
+                  Amazon growth is what we do best — from listing optimization and A+ Content to PPC and full-funnel strategy. We also support that growth with web development, design, SEO, and marketing built to scale your brand everywhere else.
                 </p>
               </div>
 

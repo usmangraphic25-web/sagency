@@ -145,7 +145,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              From Amazon store optimization and advertising to web design, branding, and marketing — Derixio helps your brand grow everywhere it sells.
+              From Amazon store optimization and advertising to web design, branding, and marketing&nbsp;— Derixio helps your brand grow everywhere it sells.
             </motion.p>
 
             {/* Action Buttons — Slightly scaled ~6% */}

@@ -226,9 +226,6 @@ export default function AmazonGrowthProcessSection() {
                       <span className="text-2xl font-black text-[#9D26FF]">
                         {step.number}
                       </span>
-                      <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--foreground-muted)] px-2 py-0.5 rounded-md bg-[var(--background-alt)] border border-[var(--border)]">
-                        Step {idx + 1}
-                      </span>
                     </div>
 
                     <h4 className="text-lg font-bold text-[var(--foreground-heading)] group-hover:text-[#9D26FF] transition-colors mb-3">

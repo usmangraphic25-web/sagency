@@ -40,25 +40,25 @@ export const CallToActionS = () => {
       id: "ppc",
       title: "PPC / Ad Management",
       problems: [
-        "High ACoS bleeding profits without clear returns",
-        "Wasted ad budget on non-converting search terms",
-        "Unstructured campaigns with poor keyword targeting",
-        "Inability to scale Sponsored Products & Display ads",
-        "Inefficient bidding strategies eating into margins",
-        "Competitors dominating top sponsored placements",
+        "High ACoS eating your profits with no clear return",
+        "Ad spend wasted on search terms that never convert",
+        "Messy campaigns with poor keyword targeting",
+        "No clear way to scale Sponsored Products and Display",
+        "Bidding strategies that cut into your margins",
+        "Competitors winning the top sponsored placements",
       ],
       solutions: [
-        "Data-driven PPC campaign restructuring & isolation",
-        "Aggressive negative keyword harvesting to cut waste",
-        "Targeted long-tail & high-converting keyword focus",
-        "Multi-ad format strategy (Products, Brands & Display)",
-        "Profit-oriented algorithmic bid management",
-        "Top-of-search dominance for key conversion terms",
+        "Clean, structured campaigns built around your goals",
+        "Ongoing negative keyword management to cut wasted spend",
+        "Focus on long-tail and high-converting keywords",
+        "A coordinated strategy across Products, Brands, and Display ads",
+        "Bid management tied to your profit margins",
+        "Stronger visibility for the terms that drive sales",
       ],
     },
     {
       id: "listing",
-      title: "Listing Images & Creatives",
+      title: "Listing Images",
       problems: [
         "Generic main images that fail to generate clicks",
         "Secondary graphics that don't highlight key benefits",
@@ -186,7 +186,7 @@ export const CallToActionS = () => {
 
         {/* Headline — Slightly enlarged ~6% for premium desktop impact */}
         <h2 className="text-[var(--foreground-heading)] text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-tight mb-9 max-w-5xl mx-auto tracking-tight">
-          Every Problem Has A Solution — <span className="text-[#9D26FF]">And We've Built Yours.</span>
+          Every Amazon Ad Problem Has a Solution — <span className="text-[#9D26FF]">We've Built Yours.</span>
         </h2>
 
         {/* Structured 2-Card Grid — Slightly enlarged ~6% card dimensions & padding */}

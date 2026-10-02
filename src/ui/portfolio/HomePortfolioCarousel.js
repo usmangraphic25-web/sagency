@@ -118,7 +118,7 @@ const FALLBACK_PROJECTS = [
 const CATEGORY_FILTERS = [
   { id: "all", label: "All Work" },
   { id: "ppc", label: "PPC / Ad Management" },
-  { id: "listing", label: "Listing Images & Creatives" },
+  { id: "listing", label: "Listing Images" },
   { id: "aplus", label: "A+ Content / Brand Store" },
   { id: "graphic", label: "Graphic Design" },
   { id: "webdev", label: "Website Development" },

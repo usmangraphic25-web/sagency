@@ -3,7 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   CheckCircle2, Film, Zap, Sparkles, Play, ShoppingBag,
-  TrendingUp, Code, Search, Palette, Globe, BarChart
+  TrendingUp, Code, Search, Palette, Globe, BarChart,
+  ShoppingCart, Store, ShieldCheck, Target, Megaphone, Clapperboard
 } from 'lucide-react';
 
 const iconMap = {
@@ -18,7 +19,13 @@ const iconMap = {
   Palette,
   Globe,
   BarChart,
-  CheckCircle2
+  CheckCircle2,
+  ShoppingCart,
+  Store,
+  ShieldCheck,
+  Target,
+  Megaphone,
+  Clapperboard
 };
 
 const FeaturesList = ({ features }) => {
