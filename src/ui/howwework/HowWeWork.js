@@ -32,7 +32,7 @@ const HowWeWorkCard = ({ card, index }) => {
           >
             <IconComponent className="w-7 h-7" />
           </div>
-          <span className="text-3xl font-extrabold text-[var(--foreground-muted)]/20 group-hover:text-[#9D26FF]/40 transition-colors font-mono">
+          <span className="text-3xl font-black text-white group-hover:text-[#9D26FF] transition-colors font-mono">
             0{index + 1}
           </span>
         </div>
