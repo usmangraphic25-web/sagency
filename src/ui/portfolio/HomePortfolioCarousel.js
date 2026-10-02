@@ -447,41 +447,48 @@ export default function HomePortfolioCarousel({ limit = 6 }) {
                       )}
                     </div>
 
-                    {/* Dark Vignette Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+                    {/* Base Light Vignette Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-300 pointer-events-none" />
 
-                    {/* Hover Glow Tint */}
-                    <div className="absolute inset-0 bg-[#9D26FF]/0 group-hover:bg-[#9D26FF]/10 transition-colors duration-300 pointer-events-none" />
+                    {/* Dark Hover Overlay (Fades in on hover) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                    {/* Bottom Details Banner with Integrated CTA */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-20 flex flex-col sm:flex-row sm:items-end justify-between gap-4 pointer-events-none">
-                      <div className="max-w-[75%]">
-                        {activeProject.client && (
-                          <p className="text-white/70 text-xs font-semibold tracking-wider uppercase mb-1.5">
-                            {activeProject.client}
-                          </p>
-                        )}
-                        <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
-                          {activeProject.title}
-                        </h3>
+                    {/* Hover Purple Tint Accent */}
+                    <div className="absolute inset-0 bg-[#9D26FF]/0 group-hover:bg-[#9D26FF]/12 transition-colors duration-300 pointer-events-none" />
+
+                    {/* Bottom Details Banner with Hover Reveal */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 z-20 flex flex-col justify-end pointer-events-auto">
+                      {activeProject.client && (
+                        <p className="text-white/70 text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-1 drop-shadow-sm">
+                          {activeProject.client}
+                        </p>
+                      )}
+
+                      {/* Project Title — Minimal elegant font by default, expands on hover */}
+                      <h3 className="text-lg sm:text-xl group-hover:sm:text-2xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md transition-all duration-300">
+                        {activeProject.title}
+                      </h3>
+
+                      {/* Hover Reveal Block: Hidden by default on desktop, reveals on hover in ~300ms */}
+                      <div className="transition-all duration-300 ease-out max-h-screen opacity-100 translate-y-0 sm:max-h-0 sm:opacity-0 sm:translate-y-3 sm:group-hover:max-h-48 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 overflow-hidden">
                         {activeProject.description && (
-                          <p className="text-white/80 text-xs sm:text-sm line-clamp-2 mt-2 hidden sm:block font-normal">
+                          <p className="text-white/85 text-xs sm:text-sm line-clamp-2 mt-2 font-normal leading-relaxed drop-shadow-sm">
                             {activeProject.description}
                           </p>
                         )}
-                      </div>
 
-                      <div className="pointer-events-auto shrink-0">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (activeProject.id) router.push(`/portfolio/project/${activeProject.id}?fromCategory=${activeProject.categorySlug || "all"}`);
-                          }}
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-extrabold shadow-2xl hover:bg-[#9D26FF] hover:text-white transition-colors duration-200 cursor-pointer"
-                        >
-                          Explore Case Study
-                          <ArrowUpRight size={15} />
-                        </button>
+                        <div className="mt-3.5 pt-0.5">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (activeProject.id) router.push(`/portfolio/project/${activeProject.id}?fromCategory=${activeProject.categorySlug || "all"}`);
+                            }}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-extrabold shadow-2xl hover:bg-[#9D26FF] hover:text-white transition-all duration-300 transform group-hover:translate-x-1 cursor-pointer"
+                          >
+                            Explore Case Study
+                            <ArrowUpRight size={15} />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
