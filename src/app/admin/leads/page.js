@@ -1483,90 +1483,100 @@ export default function AdminLeadsPage() {
                   {/* Target Crop Indicator & Dynamic Helper Text */}
                   <div className="flex items-center space-x-2 mb-3 px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-xs font-semibold text-[var(--foreground-heading)]">
                     <Crop size={14} className="text-[#9D26FF] shrink-0" />
-                    <span>Target Cover Crop: <strong className="text-[#9D26FF] font-bold">{getServiceCropDetails(projectForm.service, projectForm.aspectRatio).label}</strong></span>
+                    <span>Target Cover Crop: <strong className="text-[#9D26FF] font-bold">{getServiceCropDetails(projectForm.service, projectForm.aspectRatio, projectForm.subCategory).label}</strong></span>
                   </div>
 
                   <p className="text-[11px] text-[var(--foreground-muted)] mb-4">
-                    {getMediaGalleryHelperText(projectForm.service)}
+                    {getMediaGalleryHelperText(projectForm.service, projectForm.subCategory)}
                     <strong className="text-[#9D26FF] font-semibold">"Set Cover"</strong> to choose the main card thumbnail.
                   </p>
 
                   {/* Uploaded Media Thumbnails List */}
                   {projectForm.mediaItems.length > 0 ? (
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-60 overflow-y-auto pr-1">
-                      {projectForm.mediaItems.map((item, idx) => (
-                        <div
-                          key={item.id || idx}
-                          className={`relative group aspect-[4/3] rounded-xl overflow-hidden border bg-[var(--card)] ${
-                            item.isCover ? 'border-amber-400 ring-2 ring-amber-400/50' : 'border-[var(--border)]'
-                          }`}
-                        >
-                          {item.mediaType === 'video' ? (
-                            <div className="w-full h-full flex items-center justify-center bg-[var(--background-alt)] text-[var(--foreground-heading)]">
-                              <Video size={20} />
-                            </div>
-                          ) : (
-                            <Image
-                              src={item.url}
-                              alt="Media item"
-                              fill
-                              className="object-cover"
-                            />
-                          )}
+                      {projectForm.mediaItems.map((item, idx) => {
+                        const isLogoBranding = projectForm.service === 'Graphic Design' && (projectForm.subCategory === 'logo-branding' || projectForm.subCategory === 'logo-brand-identity');
+                        return (
+                          <div
+                            key={item.id || idx}
+                            className={`relative group rounded-xl overflow-hidden border bg-[var(--card)] ${
+                              isLogoBranding
+                                ? (item.isCover ? 'aspect-[808/632] border-amber-400 ring-2 ring-amber-400/50' : 'aspect-[4/3] border-[var(--border)]')
+                                : (item.isCover ? 'border-amber-400 ring-2 ring-amber-400/50 aspect-[4/3]' : 'border-[var(--border)] aspect-[4/3]')
+                            }`}
+                          >
+                            {item.mediaType === 'video' ? (
+                              <div className="w-full h-full flex items-center justify-center bg-[var(--background-alt)] text-[var(--foreground-heading)]">
+                                <Video size={20} />
+                              </div>
+                            ) : (
+                              <Image
+                                src={item.url}
+                                alt="Media item"
+                                fill
+                                className={isLogoBranding && !item.isCover ? "object-contain bg-black/40" : "object-cover"}
+                              />
+                            )}
 
-                          {/* Cover Badge */}
-                          {item.isCover && (
-                            <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-amber-500 text-black text-[9px] font-bold z-10">
-                              Cover
-                            </span>
-                          )}
+                            {/* Cover Badge */}
+                            {item.isCover && (
+                              <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-amber-500 text-black text-[9px] font-bold z-10">
+                                Cover
+                              </span>
+                            )}
+                            {isLogoBranding && !item.isCover && (
+                              <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-blue-600/80 text-white text-[8px] font-medium z-10">
+                                Original Size
+                              </span>
+                            )}
 
-                          {/* Action Overlay */}
-                          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-2 z-20">
-                            <div className="flex items-center justify-between">
-                              {!item.isCover && (
+                            {/* Action Overlay */}
+                            <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-2 z-20">
+                              <div className="flex items-center justify-between">
+                                {!item.isCover && (
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSetCoverMedia(item.id)}
+                                    className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500 text-black hover:bg-amber-400"
+                                  >
+                                    Set Cover
+                                  </button>
+                                )}
                                 <button
                                   type="button"
-                                  onClick={() => handleSetCoverMedia(item.id)}
-                                  className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500 text-black hover:bg-amber-400"
+                                  onClick={() => handleRemoveMedia(item.id)}
+                                  className="p-1 text-red-400 hover:text-red-300 ml-auto"
+                                  title="Remove File"
                                 >
-                                  Set Cover
+                                  <Trash2 size={13} />
                                 </button>
-                              )}
-                              <button
-                                type="button"
-                                onClick={() => handleRemoveMedia(item.id)}
-                                className="p-1 text-red-400 hover:text-red-300 ml-auto"
-                                title="Remove File"
-                              >
-                                <Trash2 size={13} />
-                              </button>
-                            </div>
+                              </div>
 
-                            <div className="flex items-center justify-between pt-1">
-                              <button
-                                type="button"
-                                disabled={idx === 0}
-                                onClick={() => handleMoveMedia(idx, 'up')}
-                                className="p-1 text-gray-300 hover:text-white disabled:opacity-30"
-                                title="Move Left"
-                              >
-                                <ArrowUp size={12} />
-                              </button>
-                              <span className="text-[10px] text-gray-400">#{idx + 1}</span>
-                              <button
-                                type="button"
-                                disabled={idx === projectForm.mediaItems.length - 1}
-                                onClick={() => handleMoveMedia(idx, 'down')}
-                                className="p-1 text-gray-300 hover:text-white disabled:opacity-30"
-                                title="Move Right"
-                              >
-                                <ArrowDown size={12} />
-                              </button>
+                              <div className="flex items-center justify-between pt-1">
+                                <button
+                                  type="button"
+                                  disabled={idx === 0}
+                                  onClick={() => handleMoveMedia(idx, 'up')}
+                                  className="p-1 text-gray-300 hover:text-white disabled:opacity-30"
+                                  title="Move Left"
+                                >
+                                  <ArrowUp size={12} />
+                                </button>
+                                <span className="text-[10px] text-gray-400">#{idx + 1}</span>
+                                <button
+                                  type="button"
+                                  disabled={idx === projectForm.mediaItems.length - 1}
+                                  onClick={() => handleMoveMedia(idx, 'down')}
+                                  className="p-1 text-gray-300 hover:text-white disabled:opacity-30"
+                                  title="Move Right"
+                                >
+                                  <ArrowDown size={12} />
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   ) : (
                     <div className="text-center py-8 border border-dashed border-[var(--border)] rounded-xl">

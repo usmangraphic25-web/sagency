@@ -4,9 +4,13 @@
  */
 
 /**
- * Dynamic helper text for Project Media Gallery based on selected Main Service
+ * Dynamic helper text for Project Media Gallery based on selected Main Service & Subcategory
  */
-export function getMediaGalleryHelperText(service) {
+export function getMediaGalleryHelperText(service, subCategory = '') {
+  const sub = (subCategory || '').toLowerCase();
+  if ((service || '').toLowerCase().includes('graphic') && (sub.includes('logo-branding') || sub.includes('logo-brand-identity'))) {
+    return 'Upload project media files. Selected Cover image uses fixed 808×632 crop size, while all other images retain original uploaded dimensions. Click ';
+  }
   switch (service) {
     case 'Digital Marketing':
       return 'Upload all project files (e.g. campaign screenshots, ad creatives, or performance reports). Click ';
@@ -28,8 +32,9 @@ export function getMediaGalleryHelperText(service) {
 /**
  * Returns aspect ratio crop dimensions/info for admin crop tool & cover preview
  */
-export function getServiceCropDetails(service, aspectRatio = '16:9') {
+export function getServiceCropDetails(service, aspectRatio = '16:9', subCategory = '') {
   const s = (service || '').toLowerCase();
+  const sub = (subCategory || '').toLowerCase();
   
   if (s.includes('video') || s.includes('motion')) {
     if (aspectRatio === '9:16' || aspectRatio === 'vertical') {
@@ -42,6 +47,9 @@ export function getServiceCropDetails(service, aspectRatio = '16:9') {
   }
 
   if (s.includes('graphic')) {
+    if (sub.includes('logo-branding') || sub.includes('logo-brand-identity')) {
+      return { ratioClass: 'aspect-[808/632]', dimensions: 'Cover: 808×632 px | Gallery: Original Dimensions', label: 'Graphic Design (808×632)' };
+    }
     return { ratioClass: 'aspect-[808/632]', dimensions: '808×632 px', label: 'Graphic Design (808×632)' };
   }
 

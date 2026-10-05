@@ -452,44 +452,67 @@ export default function ProjectShowcaseModal({ project, isOpen, onClose, categor
               <div className="relative w-full rounded-2xl overflow-hidden bg-[var(--card)] border border-[var(--border)] shadow-2xl min-h-[300px] flex items-center justify-center p-2 sm:p-4">
 
                 {/* Media Content */}
-                {currentMedia.mediaType === 'video' || (activeIndex === 0 && project.service === 'Video & Motion Design') ? (
-                  currentMedia.videoFile || project.videoFile ? (
-                    <video
-                      controls
-                      autoPlay
-                      key={currentMedia.url || currentMedia.videoFile}
-                      poster={currentMedia.url || project.coverImage}
-                      className="w-full h-auto max-h-[75vh] block rounded-xl object-contain"
-                    >
-                      <source src={currentMedia.videoFile || project.videoFile} type="video/mp4" />
-                    </video>
-                  ) : (currentMedia.videoUrl || project.videoUrl) ? (
-                    <div className="w-full aspect-[16/9] rounded-xl overflow-hidden">
-                      <iframe
-                        src={currentMedia.videoUrl || project.videoUrl}
-                        className="w-full h-full"
-                        allowFullScreen
-                      />
-                    </div>
-                  ) : (
+                {(() => {
+                  const isVideoItem = currentMedia.mediaType === 'video' || (activeIndex === 0 && project.service === 'Video & Motion Design');
+                  if (isVideoItem) {
+                    if (currentMedia.videoFile || project.videoFile) {
+                      return (
+                        <video
+                          controls
+                          autoPlay
+                          key={currentMedia.url || currentMedia.videoFile}
+                          poster={currentMedia.url || project.coverImage}
+                          className="w-full h-auto max-h-[75vh] block rounded-xl object-contain"
+                        >
+                          <source src={currentMedia.videoFile || project.videoFile} type="video/mp4" />
+                        </video>
+                      );
+                    }
+                    if (currentMedia.videoUrl || project.videoUrl) {
+                      return (
+                        <div className="w-full aspect-[16/9] rounded-xl overflow-hidden">
+                          <iframe
+                            src={currentMedia.videoUrl || project.videoUrl}
+                            className="w-full h-full"
+                            allowFullScreen
+                          />
+                        </div>
+                      );
+                    }
+                  }
+
+                  const subCat = project.subCategory || project.categorySlug || '';
+                  const isLogoBranding = ((displayCategory || '').toLowerCase().includes('graphic') || (project.service || '').toLowerCase().includes('graphic')) &&
+                    (subCat === 'logo-branding' || subCat === 'logo-brand-identity');
+                  const isCoverSlide = Boolean(currentMedia.isCover || activeIndex === 0);
+
+                  if (isLogoBranding && isCoverSlide) {
+                    return (
+                      <div className="w-full max-w-4xl aspect-[808/632] rounded-xl overflow-hidden mx-auto relative bg-[var(--background-alt)]">
+                        <img
+                          src={currentMedia.url || "/assets/portfolio-web-v4.jpg"}
+                          alt={`${project.title} - Cover`}
+                          onError={(e) => { e.currentTarget.src = "/assets/portfolio-web-v4.jpg"; }}
+                          className="w-full h-full object-cover block"
+                        />
+                      </div>
+                    );
+                  }
+
+                  return (
                     <img
-                      src={currentMedia.url}
+                      src={currentMedia.url || "/assets/portfolio-web-v4.jpg"}
                       alt={`${project.title} - Asset ${activeIndex + 1}`}
+                      onError={(e) => { e.currentTarget.src = "/assets/portfolio-web-v4.jpg"; }}
                       className="w-full h-auto max-h-[75vh] block rounded-xl object-contain mx-auto"
                     />
-                  )
-                ) : (
-                  <img
-                    src={currentMedia.url}
-                    alt={`${project.title} - Asset ${activeIndex + 1}`}
-                    className="w-full h-auto max-h-[75vh] block rounded-xl object-contain mx-auto"
-                  />
-                )}
+                  );
+                })()}
 
                 {/* Cover Tag on Image 1 */}
                 {activeIndex === 0 && (
                   <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-amber-500 text-black text-xs font-bold shadow-lg z-20">
-                    Cover Image
+                    Cover Image (808×632)
                   </span>
                 )}
 
