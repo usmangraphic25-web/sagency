@@ -617,12 +617,53 @@ export async function getProjects() {
             if (typeof gallery === 'string') {
               try { gallery = JSON.parse(gallery); } catch (e) { gallery = []; }
             }
+
+            const itemsMap = new Map();
+            if (Array.isArray(mediaItems)) {
+              mediaItems.forEach((m, idx) => {
+                const url = typeof m === 'string' ? m : (m?.url || '');
+                if (url) {
+                  itemsMap.set(url, {
+                    id: m.id || `m_${idx}`,
+                    url: url,
+                    mediaType: m.mediaType || (url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image'),
+                    videoUrl: m.videoUrl || '',
+                    videoFile: m.videoFile || '',
+                    isCover: Boolean(m.isCover || idx === 0),
+                    displayOrder: typeof m.displayOrder === 'number' ? m.displayOrder : idx
+                  });
+                }
+              });
+            }
+
+            if (Array.isArray(gallery)) {
+              gallery.forEach((g, idx) => {
+                const url = typeof g === 'string' ? g : (g?.url || '');
+                if (url && !itemsMap.has(url)) {
+                  itemsMap.set(url, {
+                    id: `g_${idx}`,
+                    url: url,
+                    mediaType: url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image',
+                    isCover: itemsMap.size === 0 && idx === 0,
+                    displayOrder: itemsMap.size
+                  });
+                }
+              });
+            }
+
+            const resolvedMediaItems = Array.from(itemsMap.values());
+            if (resolvedMediaItems.length > 0 && !resolvedMediaItems.some(m => m.isCover)) {
+              resolvedMediaItems[0].isCover = true;
+            }
+
+            const resolvedGallery = resolvedMediaItems.map(m => m.url).filter(Boolean);
+
             return {
               ...p,
-              mediaItems: Array.isArray(mediaItems) ? mediaItems : [],
-              gallery: Array.isArray(gallery) ? gallery : [],
-              coverImage: p.coverImage || p.image || '/assets/portfolio-web-v4.jpg',
-              image: p.image || p.coverImage || '/assets/portfolio-web-v4.jpg'
+              mediaItems: resolvedMediaItems,
+              gallery: resolvedGallery,
+              coverImage: p.coverImage || p.image || (resolvedMediaItems[0]?.url) || '/assets/portfolio-web-v4.jpg',
+              image: p.image || p.coverImage || (resolvedMediaItems[0]?.url) || '/assets/portfolio-web-v4.jpg'
             };
           });
           memoryProjects = dbProjects;
@@ -659,7 +700,7 @@ export async function getProjects() {
 
   // 2. Add / merge dynamic projects from memory, file storage, and Supabase DB
   [...STATIC_PORTFOLIO_PROJECTS, ...memoryProjects, ...fileProjects, ...dbProjects].forEach(proj => {
-    if (proj && proj.id && !proj.deleted) {
+    if (proj && proj.id) {
       const existing = mergedMap.get(proj.id) || {};
       mergedMap.set(proj.id, {
         ...existing,
@@ -668,9 +709,11 @@ export async function getProjects() {
     }
   });
 
-  return Array.from(mergedMap.values()).sort(
-    (a, b) => (a.displayOrder || 0) - (b.displayOrder || 0) || new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
-  );
+  return Array.from(mergedMap.values())
+    .filter(p => !p.deleted && (p.status || '').toUpperCase() !== 'DELETED')
+    .sort(
+      (a, b) => (a.displayOrder || 0) - (b.displayOrder || 0) || new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+    );
 }
 
 /**
@@ -708,27 +751,72 @@ export async function getProjectsByCategory(categorySlug) {
 }
 
 /**
- * Create or save a project - DIRECT PERSISTENCE TO SUPABASE DATABASE
+ * Create or save a project - DIRECT PERSISTENCE TO SUPABASE DATABASE (UNLIMITED GALLERY IMAGES)
  */
 export async function saveProject(rawProjectData) {
   const isUpdate = Boolean(rawProjectData.id);
   const now = new Date().toISOString();
 
-  // Multi-media gallery processing
+  // Multi-media gallery processing with ZERO limits or caps
   let rawMediaItems = Array.isArray(rawProjectData.mediaItems) ? rawProjectData.mediaItems : [];
-  if (rawMediaItems.length === 0 && rawProjectData.image) {
-    rawMediaItems = [{
-      id: `media_${Date.now()}_0`,
-      url: rawProjectData.image,
-      mediaType: rawProjectData.mediaType || (rawProjectData.videoUrl || rawProjectData.videoFile ? 'video' : 'image'),
-      videoUrl: rawProjectData.videoUrl || '',
-      videoFile: rawProjectData.videoFile || '',
-      isCover: true,
-      displayOrder: 0
-    }];
+  if (typeof rawMediaItems === 'string') {
+    try { rawMediaItems = JSON.parse(rawMediaItems); } catch { rawMediaItems = []; }
   }
 
-  const coverItem = rawMediaItems.find(m => m.isCover) || rawMediaItems[0] || {};
+  let rawGallery = rawProjectData.gallery;
+  if (typeof rawGallery === 'string') {
+    try { rawGallery = JSON.parse(rawGallery); } catch { rawGallery = []; }
+  }
+
+  const itemsMap = new Map();
+  if (Array.isArray(rawMediaItems)) {
+    rawMediaItems.forEach((m, idx) => {
+      const url = typeof m === 'string' ? m : (m?.url || '');
+      if (url) {
+        itemsMap.set(url, {
+          id: m.id || `media_${Date.now()}_${idx}`,
+          url: url,
+          mediaType: m.mediaType || (url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image'),
+          videoUrl: m.videoUrl || '',
+          videoFile: m.videoFile || '',
+          isCover: Boolean(m.isCover || idx === 0),
+          displayOrder: typeof m.displayOrder === 'number' ? m.displayOrder : idx
+        });
+      }
+    });
+  }
+
+  if (Array.isArray(rawGallery)) {
+    rawGallery.forEach((g, idx) => {
+      const url = typeof g === 'string' ? g : (g?.url || '');
+      if (url && !itemsMap.has(url)) {
+        itemsMap.set(url, {
+          id: `media_${Date.now()}_g_${idx}`,
+          url: url,
+          mediaType: url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image',
+          isCover: itemsMap.size === 0 && idx === 0,
+          displayOrder: itemsMap.size
+        });
+      }
+    });
+  }
+
+  if (itemsMap.size === 0 && rawProjectData.image) {
+    itemsMap.set(rawProjectData.image, {
+      id: `media_${Date.now()}_0`,
+      url: rawProjectData.image,
+      mediaType: rawProjectData.mediaType || 'image',
+      isCover: true,
+      displayOrder: 0
+    });
+  }
+
+  const finalMediaItems = Array.from(itemsMap.values());
+  if (finalMediaItems.length > 0 && !finalMediaItems.some(m => m.isCover)) {
+    finalMediaItems[0].isCover = true;
+  }
+
+  const coverItem = finalMediaItems.find(m => m.isCover) || finalMediaItems[0] || {};
   const coverImageUrl = coverItem.url || rawProjectData.coverImage || rawProjectData.image || '/assets/portfolio-web-v4.jpg';
 
   const projectToSave = {
@@ -743,9 +831,9 @@ export async function saveProject(rawProjectData) {
     projectUrl: (rawProjectData.projectUrl || '').trim(),
     image: coverImageUrl || '/assets/portfolio-web-v4.jpg',
     coverImage: coverImageUrl || '/assets/portfolio-web-v4.jpg',
-    mediaItems: rawMediaItems,
-    mediaCount: rawMediaItems.length || 1,
-    gallery: rawMediaItems.map(m => m.url).filter(Boolean),
+    mediaItems: finalMediaItems,
+    mediaCount: finalMediaItems.length || 1,
+    gallery: finalMediaItems.map(m => m.url).filter(Boolean),
     tags: Array.isArray(rawProjectData.tags) ? rawProjectData.tags : (rawProjectData.tags ? String(rawProjectData.tags).split(',').map(s => s.trim()) : []),
     status: rawProjectData.status || (rawProjectData.published === false ? 'Hidden' : 'Published'),
     published: rawProjectData.published !== false && (rawProjectData.status || '').toUpperCase() !== 'HIDDEN',
@@ -850,7 +938,7 @@ export async function deleteProject(id) {
   targetProject = currentProjects.find(p => p.id === id);
 
   if (url && key) {
-    // 1. Delete DB record from Supabase
+    // 1. Delete DB record from Supabase table
     const dbEndpoint = `${url}/rest/v1/portfolio_projects?id=eq.${id}`;
     const res = await fetch(dbEndpoint, {
       method: 'DELETE',
@@ -866,14 +954,44 @@ export async function deleteProject(id) {
       throw new Error(`Supabase DB Delete Error (${res.status}): ${errText}`);
     }
 
-    // 2. Cleanup associated media files hosted in Supabase Storage 'portfolio' bucket
+    // 2. Save a deletion tombstone to Supabase DB to permanently suppress static/cached items
+    const tombstone = {
+      id: id,
+      title: 'DELETED',
+      service: 'DELETED',
+      categorySlug: 'DELETED',
+      categoryName: 'DELETED',
+      subCategory: 'DELETED',
+      status: 'DELETED',
+      published: false,
+      deleted: true,
+      updatedAt: new Date().toISOString()
+    };
+
+    try {
+      const tombstoneEndpoint = `${url}/rest/v1/portfolio_projects`;
+      await fetch(tombstoneEndpoint, {
+        method: 'POST',
+        headers: {
+          'apikey': key,
+          'Authorization': `Bearer ${key}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates,return=minimal'
+        },
+        body: JSON.stringify(tombstone)
+      });
+    } catch (tombErr) {
+      console.warn('Notice: Could not write deletion tombstone to Supabase DB:', tombErr);
+    }
+
+    // 3. Cleanup associated media files hosted in Supabase Storage 'portfolio' bucket
     if (targetProject) {
       const urlsToClean = [
         targetProject.image,
         targetProject.coverImage,
         targetProject.thumbnail,
-        ...(Array.isArray(targetProject.mediaItems) ? targetProject.mediaItems.map(m => m.url) : []),
-        ...(Array.isArray(targetProject.gallery) ? targetProject.gallery : [])
+        ...(Array.isArray(targetProject.mediaItems) ? targetProject.mediaItems.map(m => (typeof m === 'string' ? m : m.url)) : []),
+        ...(Array.isArray(targetProject.gallery) ? targetProject.gallery.map(g => (typeof g === 'string' ? g : g.url)) : [])
       ].filter(u => typeof u === 'string' && u.includes('/storage/v1/object/public/portfolio/'));
 
       for (const u of Array.from(new Set(urlsToClean))) {
@@ -895,10 +1013,30 @@ export async function deleteProject(id) {
     }
   }
 
-  // 3. Remove from memory and file cache
-  const remaining = currentProjects.filter(p => p.id !== id);
-  memoryProjects = remaining;
-  updateLocalFileCache(remaining);
+  // 4. Update memory Projects and local file cache with deletion state
+  const deletedTombstone = {
+    id: id,
+    title: 'DELETED',
+    status: 'DELETED',
+    published: false,
+    deleted: true
+  };
+
+  memoryProjects = memoryProjects.map(p => p.id === id ? deletedTombstone : p).filter(p => p.id !== id);
+  memoryProjects.push(deletedTombstone);
+
+  const filePath = getProjectsStoragePath();
+  let localProjects = [];
+  try {
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, 'utf8');
+      localProjects = JSON.parse(data);
+    }
+  } catch (e) {}
+
+  const updatedLocal = localProjects.map(p => p.id === id ? deletedTombstone : p).filter(p => p.id !== id);
+  updatedLocal.push(deletedTombstone);
+  updateLocalFileCache(updatedLocal);
 
   return true;
 }

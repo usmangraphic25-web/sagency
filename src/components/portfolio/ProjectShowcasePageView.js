@@ -136,7 +136,6 @@ export default function ProjectShowcasePageView({ project }) {
   };
 
   // Process project media items & gallery with robust JSON parsing
-  let mediaList = [];
   let rawMedia = project.mediaItems;
   if (typeof rawMedia === "string") {
     try { rawMedia = JSON.parse(rawMedia); } catch { rawMedia = []; }
@@ -147,35 +146,51 @@ export default function ProjectShowcasePageView({ project }) {
     try { rawGallery = JSON.parse(rawGallery); } catch { rawGallery = []; }
   }
 
-  if (Array.isArray(rawMedia) && rawMedia.length > 0) {
-    mediaList = rawMedia.map((m, i) => ({
-      id: m.id || `m_${i}`,
-      url: typeof m === "string" ? m : (m.url || ""),
-      mediaType: m.mediaType || (m.url && m.url.match(/\.(mp4|webm|mov|m4v)$/i) ? "video" : "image"),
-      videoUrl: m.videoUrl || "",
-      videoFile: m.videoFile || "",
-      isCover: Boolean(m.isCover || i === 0),
-      displayOrder: typeof m.displayOrder === "number" ? m.displayOrder : i,
-    }));
-  } else if (Array.isArray(rawGallery) && rawGallery.length > 0) {
-    mediaList = rawGallery.map((url, i) => ({
-      id: `g_${i}`,
-      url: typeof url === "string" ? url : (url?.url || ""),
-      mediaType: "image",
-      isCover: i === 0,
-      displayOrder: i,
-    }));
-  } else {
+  const itemsMap = new Map();
+  if (Array.isArray(rawMedia)) {
+    rawMedia.forEach((m, i) => {
+      const url = typeof m === "string" ? m : (m?.url || "");
+      if (url) {
+        itemsMap.set(url, {
+          id: m.id || `m_${i}`,
+          url: url,
+          mediaType: m.mediaType || (url.match(/\.(mp4|webm|mov|m4v)$/i) ? "video" : "image"),
+          videoUrl: m.videoUrl || "",
+          videoFile: m.videoFile || "",
+          isCover: Boolean(m.isCover || i === 0),
+          displayOrder: typeof m.displayOrder === "number" ? m.displayOrder : i,
+        });
+      }
+    });
+  }
+
+  if (Array.isArray(rawGallery)) {
+    rawGallery.forEach((g, i) => {
+      const url = typeof g === "string" ? g : (g?.url || "");
+      if (url && !itemsMap.has(url)) {
+        itemsMap.set(url, {
+          id: `g_${i}`,
+          url: url,
+          mediaType: url.match(/\.(mp4|webm|mov|m4v)$/i) ? "video" : "image",
+          isCover: itemsMap.size === 0 && i === 0,
+          displayOrder: itemsMap.size,
+        });
+      }
+    });
+  }
+
+  if (itemsMap.size === 0) {
     const fallbackUrl = project.coverImage || project.image || project.thumbnail || "/assets/portfolio-web-v4.jpg";
-    mediaList = [{ id: "m_0", url: fallbackUrl, mediaType: project.mediaType || "image", isCover: true, displayOrder: 0 }];
+    itemsMap.set(fallbackUrl, {
+      id: "m_fallback",
+      url: fallbackUrl,
+      mediaType: project.mediaType || "image",
+      isCover: true,
+      displayOrder: 0,
+    });
   }
 
-  mediaList = mediaList.filter((m) => m.url || m.videoUrl || m.videoFile);
-
-  if (mediaList.length === 0) {
-    mediaList = [{ id: "m_fallback", url: project.coverImage || project.image || "/assets/portfolio-web-v4.jpg", mediaType: "image", isCover: true, displayOrder: 0 }];
-  }
-
+  let mediaList = Array.from(itemsMap.values());
   mediaList.sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
 
   const coverItem = mediaList.find((m) => m.isCover) || mediaList[0] || {};

@@ -32,25 +32,6 @@ export default function GraphicDesignSubCategoryPortfolioPage({ params }) {
           }
         }
 
-        // Merge with static fallback showcase items for this subcategory if present
-        const staticFallback = graphicDesignProjects.filter(
-          (p) =>
-            p.categorySlug === subCategorySlug ||
-            (categoryInfo?.altSlugs && categoryInfo.altSlugs.includes(p.categorySlug))
-        );
-
-        const existingIds = new Set(fetchedData.map((p) => p.id));
-        staticFallback.forEach((p) => {
-          if (!existingIds.has(p.id)) {
-            fetchedData.push({
-              ...p,
-              service: "Graphic Design",
-              categoryName: categoryInfo?.name || "Graphic Design",
-              published: true,
-            });
-          }
-        });
-
         setProjects(fetchedData);
       } catch (err) {
         console.error("Error fetching portfolio projects:", err);

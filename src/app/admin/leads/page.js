@@ -437,14 +437,62 @@ export default function AdminLeadsPage() {
   const openEditProjectModal = (proj) => {
     setEditingProject(proj);
     let items = Array.isArray(proj.mediaItems) ? proj.mediaItems : [];
-    if (items.length === 0 && proj.image) {
-      items = [{
-        id: `media_0`,
-        url: proj.image,
+    if (typeof items === 'string') {
+      try { items = JSON.parse(items); } catch (e) { items = []; }
+    }
+    
+    let rawGallery = proj.gallery;
+    if (typeof rawGallery === 'string') {
+      try { rawGallery = JSON.parse(rawGallery); } catch (e) { rawGallery = []; }
+    }
+
+    const itemsMap = new Map();
+    if (Array.isArray(items)) {
+      items.forEach((m, idx) => {
+        const url = typeof m === 'string' ? m : (m?.url || '');
+        if (url) {
+          itemsMap.set(url, {
+            id: m.id || `media_${Date.now()}_${idx}`,
+            url: url,
+            mediaType: m.mediaType || (url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image'),
+            videoUrl: m.videoUrl || '',
+            videoFile: m.videoFile || '',
+            isCover: Boolean(m.isCover || idx === 0),
+            displayOrder: typeof m.displayOrder === 'number' ? m.displayOrder : idx
+          });
+        }
+      });
+    }
+
+    if (Array.isArray(rawGallery)) {
+      rawGallery.forEach((g, idx) => {
+        const url = typeof g === 'string' ? g : (g?.url || '');
+        if (url && !itemsMap.has(url)) {
+          itemsMap.set(url, {
+            id: `media_${Date.now()}_g_${idx}`,
+            url: url,
+            mediaType: url.match(/\.(mp4|webm|mov|m4v)$/i) ? 'video' : 'image',
+            isCover: itemsMap.size === 0 && idx === 0,
+            displayOrder: itemsMap.size
+          });
+        }
+      });
+    }
+
+    if (itemsMap.size === 0 && (proj.coverImage || proj.image)) {
+      const fallbackUrl = proj.coverImage || proj.image;
+      itemsMap.set(fallbackUrl, {
+        id: 'media_0',
+        url: fallbackUrl,
         mediaType: proj.mediaType || 'image',
         isCover: true,
         displayOrder: 0
-      }];
+      });
+    }
+
+    const resolvedItems = Array.from(itemsMap.values());
+    if (resolvedItems.length > 0 && !resolvedItems.some(m => m.isCover)) {
+      resolvedItems[0].isCover = true;
     }
 
     setProjectForm({
@@ -457,7 +505,7 @@ export default function AdminLeadsPage() {
       featured: Boolean(proj.featured),
       published: proj.published !== false && proj.status !== 'Hidden',
       displayOrder: proj.displayOrder || 0,
-      mediaItems: items,
+      mediaItems: resolvedItems,
 
       tag: proj.tag || '',
       metricValue: proj.metricValue || '',
@@ -621,11 +669,13 @@ export default function AdminLeadsPage() {
       const data = await res.json();
       if (data.success) {
         setProjects(prev => prev.filter(p => p.id !== id));
+        await fetchProjects();
       } else {
-        alert(data.error || 'Failed to delete project.');
+        alert(data.error || 'Failed to delete project from database.');
       }
     } catch (err) {
       console.error('Error deleting project:', err);
+      alert('Network error while deleting project. Project remains in database.');
     }
   };
 
@@ -1457,7 +1507,7 @@ export default function AdminLeadsPage() {
                 <div className="bg-[var(--background-alt)] p-5 rounded-2xl border border-[var(--border)]">
                   <div className="flex items-center justify-between mb-3">
                     <label className="block text-xs font-bold uppercase tracking-wider text-[var(--foreground-heading)]">
-                      Project Media Gallery ({projectForm.mediaItems.length} Files Uploaded) *
+                      Project Media Gallery ({projectForm.mediaItems.length} Files Uploaded · Unlimited) *
                     </label>
 
                     <input
@@ -1493,7 +1543,7 @@ export default function AdminLeadsPage() {
 
                   {/* Uploaded Media Thumbnails List */}
                   {projectForm.mediaItems.length > 0 ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-60 overflow-y-auto pr-1">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-96 overflow-y-auto pr-1 custom-scrollbar">
                       {projectForm.mediaItems.map((item, idx) => {
                         const isLogoBranding = projectForm.service === 'Graphic Design' && (projectForm.subCategory === 'logo-branding' || projectForm.subCategory === 'logo-brand-identity');
                         return (

@@ -1,5 +1,122 @@
 [
   {
+    "id": "proj_1791185608055_jycr3",
+    "title": "Kolix Logo & Brand Identity Design",
+    "description": "A modern and memorable logo design created for Kolix, with a clean visual identity focused on simplicity, recognition, and a professional brand presence. The project includes logo variations and branded visual applications.",
+    "service": "Graphic Design",
+    "categorySlug": "logo-branding",
+    "categoryName": "Logo & Branding",
+    "subCategory": "logo-branding",
+    "image": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185330856_84jav.jpg",
+    "projectUrl": "",
+    "client": "",
+    "featured": false,
+    "published": true,
+    "status": "Published",
+    "displayOrder": 0,
+    "gallery": [
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185330856_84jav.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185352727_ti5ff.jpg",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185361457_mvkha.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185373074_45xxv.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185401732_vsm9z.png",
+      "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185408157_5jts2.jpg"
+    ],
+    "tags": [],
+    "createdAt": "2026-10-05T07:33:28.054+00:00",
+    "updatedAt": "2026-10-05T07:34:52.038+00:00",
+    "mediaType": "image",
+    "width": 0,
+    "height": 0,
+    "aspectRatio": "16:9",
+    "fileSize": 0,
+    "thumbnail": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185330856_84jav.jpg",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TailwindCSS"
+    ],
+    "industry": "SaaS / E-commerce",
+    "websiteUrl": "",
+    "keywordsImproved": "+45 Keywords Top #3",
+    "trafficGrowth": "+350% Organic Growth",
+    "caseStudyData": "",
+    "campaignName": "Kolix Logo & Brand Identity Design",
+    "platform": "Facebook Ads",
+    "results": "Delivered a professional, scalable, and memorable logo identity designed for consistent use across digital platforms and marketing materials.",
+    "brandName": "",
+    "revenueGrowth": "+280% MoM Revenue",
+    "acosImprovement": "ACOS reduced 42% -> 14%",
+    "campaignResults": "",
+    "videoType": "Reel",
+    "videoUrl": "",
+    "videoFile": "",
+    "mediaItems": [
+      {
+        "id": "media_1791185335823_0_k7l9",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185330856_84jav.jpg",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
+        "displayOrder": 0
+      },
+      {
+        "id": "media_1791185357724_0_uz7q",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185352727_ti5ff.jpg",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
+        "displayOrder": 1
+      },
+      {
+        "id": "media_1791185366784_1_y3jw",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185361457_mvkha.png",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
+        "displayOrder": 2
+      },
+      {
+        "id": "media_1791185377991_2_o9y7",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185373074_45xxv.png",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
+        "displayOrder": 3
+      },
+      {
+        "id": "media_1791185406874_4_oeaj",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185401732_vsm9z.png",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
+        "displayOrder": 5
+      },
+      {
+        "id": "media_1791185413209_5_8m30",
+        "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185408157_5jts2.jpg",
+        "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
+        "displayOrder": 6
+      }
+    ],
+    "coverImage": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1791185330856_84jav.jpg",
+    "mediaCount": 6,
+    "metricValue": "100% Custom",
+    "metricSub": "BRAND IDENTITY DESIGN",
+    "problem": "The brand needed a distinctive, professional logo that could create a strong visual identity and remain recognizable across different platforms and brand applications.",
+    "solution": "We developed a clean and modern logo concept with a strong visual symbol, balanced typography, and a versatile design system suitable for digital and branded materials.",
+    "beforeImage": "",
+    "tag": "Logo & Branding"
+  },
+  {
     "id": "proj_1789573862420_wmtrd",
     "title": "Avocado Hair & Skin Oil Listing Images",
     "description": "A premium Amazon listing image set showcasing organic avocado hair & skin oil through clean product visuals, natural ingredients, skincare application, and hair-care lifestyle imagery.",
@@ -56,57 +173,64 @@
       {
         "id": "media_1789573852815_0_f4xm",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573848934_f16ve.png",
-        "isCover": true,
-        "fileSize": 1994183,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789573817529_0_l00o",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573814694_l7v3m.jpg",
-        "isCover": false,
-        "fileSize": 497695,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789573821109_1_o8r9",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573818055_6eeir.jpg",
-        "isCover": false,
-        "fileSize": 1484444,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789573825566_2_dd2u",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573822474_la50i.jpg",
-        "isCover": false,
-        "fileSize": 1995946,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789573829385_3_ma2y",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573826035_96owd.jpg",
-        "isCover": false,
-        "fileSize": 1439086,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789573835231_4_t07u",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573830738_z58f2.jpg",
-        "isCover": false,
-        "fileSize": 1763999,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789573838353_5_qd70",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573835681_19in2.jpg",
-        "isCover": false,
-        "fileSize": 1323708,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       }
     ],
@@ -179,81 +303,91 @@
       {
         "id": "media_1789573640742_8_tbjm",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573638036_t54hm.jpg",
-        "isCover": true,
-        "fileSize": 854135,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789573644513_9_w4hu",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573641822_i2833.jpg",
-        "isCover": false,
-        "fileSize": 1405034,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789573610357_0_rmsm",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573607251_ot7v6.jpg",
-        "isCover": false,
-        "fileSize": 1623284,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789573613836_1_hdpb",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573611127_vb9le.jpg",
-        "isCover": false,
-        "fileSize": 1716688,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789573617435_2_de96",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573614689_jtspr.jpg",
-        "isCover": false,
-        "fileSize": 1714074,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789573621631_3_j92n",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573618936_k7y58.jpg",
-        "isCover": false,
-        "fileSize": 1846618,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789573626273_4_vnke",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573623436_a48o2.jpg",
-        "isCover": false,
-        "fileSize": 2545753,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       },
       {
         "id": "media_1789573630255_5_vbjy",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573627530_rew3r.jpg",
-        "isCover": false,
-        "fileSize": 1869902,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 7
       },
       {
         "id": "media_1789573634253_6_8g0y",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573631544_t36rd.jpg",
-        "isCover": false,
-        "fileSize": 1939525,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 8
       },
       {
         "id": "media_1789573638226_7_tif2",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789573635377_hhsk9.jpg",
-        "isCover": false,
-        "fileSize": 2078966,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 9
       }
     ],
@@ -326,81 +460,91 @@
       {
         "id": "media_1789572576731_8_4mp2",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572573924_t83ij.jpg",
-        "isCover": true,
-        "fileSize": 904412,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789572583977_9_65z1",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572581198_cren0.jpg",
-        "isCover": false,
-        "fileSize": 1861729,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789572540854_0_h1sp",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572537878_1iszh.jpg",
-        "isCover": false,
-        "fileSize": 2066403,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789572544629_1_o88p",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572541851_maqdp.jpg",
-        "isCover": false,
-        "fileSize": 1892428,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789572548521_2_f6q4",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572545751_9acqa.jpg",
-        "isCover": false,
-        "fileSize": 2059536,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789572553198_3_rwtm",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572550412_pacwl.jpg",
-        "isCover": false,
-        "fileSize": 2490765,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789572557778_4_r9mu",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572555070_dbwk8.jpg",
-        "isCover": false,
-        "fileSize": 2407618,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       },
       {
         "id": "media_1789572565474_5_9ea0",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572562623_dva7b.jpg",
-        "isCover": false,
-        "fileSize": 2038113,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 7
       },
       {
         "id": "media_1789572569614_6_79lh",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572566815_gs3ch.jpg",
-        "isCover": false,
-        "fileSize": 1921511,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 8
       },
       {
         "id": "media_1789572574326_7_8v17",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572571598_xmsln.jpg",
-        "isCover": false,
-        "fileSize": 2321948,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 9
       }
     ],
@@ -471,65 +615,73 @@
       {
         "id": "media_1789571287984_6_iha3",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571285318_c2vp2.jpg",
-        "isCover": true,
-        "fileSize": 1006043,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789571291397_7_wxt8",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571288741_pb06l.jpg",
-        "isCover": false,
-        "fileSize": 1754945,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789571269703_0_u2ma",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571266748_wvx2w.jpg",
-        "isCover": false,
-        "fileSize": 1379650,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789571273226_1_wxwr",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571270499_yznb5.jpg",
-        "isCover": false,
-        "fileSize": 1563623,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789571275900_2_epfi",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571272999_n6us2.jpg",
-        "isCover": false,
-        "fileSize": 1108971,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789571279286_3_3ldk",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571276588_bftdr.jpg",
-        "isCover": false,
-        "fileSize": 1631546,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789571283201_4_qh79",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571280064_iw06v.jpg",
-        "isCover": false,
-        "fileSize": 1723402,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       },
       {
         "id": "media_1789571285533_5_s9nc",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571282937_4o38h.jpg",
-        "isCover": false,
-        "fileSize": 870892,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 7
       }
     ],
@@ -601,73 +753,82 @@
       {
         "id": "media_1789571441367_8_kj3h",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571438451_q0gf2.png",
-        "isCover": true,
-        "fileSize": 2126455,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789571411410_0_m7dx",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571408683_oy9lw.jpg",
-        "isCover": false,
-        "fileSize": 1220116,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789571415013_1_ykn1",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571412110_2wjvl.jpg",
-        "isCover": false,
-        "fileSize": 1731740,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789571418534_2_305e",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571415834_kgvvr.jpg",
-        "isCover": false,
-        "fileSize": 1713450,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789571422323_3_rnzt",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571419375_xckgl.jpg",
-        "isCover": false,
-        "fileSize": 1988535,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789571425936_4_9ncn",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571423178_9y9oc.jpg",
-        "isCover": false,
-        "fileSize": 1764287,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789571429193_5_8w8s",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571426535_fy41k.jpg",
-        "isCover": false,
-        "fileSize": 1536428,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       },
       {
         "id": "media_1789571432935_6_n0yr",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571430256_whtjx.jpg",
-        "isCover": false,
-        "fileSize": 1812907,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 7
       },
       {
         "id": "media_1789571437209_7_wqzg",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789571434361_gdxfh.jpg",
-        "isCover": false,
-        "fileSize": 2072996,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 8
       }
     ],
@@ -738,65 +899,73 @@
       {
         "id": "media_1789572059153_7_rwui",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572056454_x67ye.jpg",
-        "isCover": true,
-        "fileSize": 889364,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789572026067_0_zr20",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572023249_zfvh5.jpg",
-        "isCover": false,
-        "fileSize": 1127882,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789572029365_1_xzgy",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572026631_rs02v.jpg",
-        "isCover": false,
-        "fileSize": 1337281,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789572033659_2_iqmz",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572029723_gijpb.jpg",
-        "isCover": false,
-        "fileSize": 1501428,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789572041051_3_heep",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572034515_5yrbn.jpg",
-        "isCover": false,
-        "fileSize": 1707918,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1789572050262_4_he14",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572047600_n7bum.jpg",
-        "isCover": false,
-        "fileSize": 1591837,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       },
       {
         "id": "media_1789572053500_5_xffx",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572050858_bpf4r.jpg",
-        "isCover": false,
-        "fileSize": 1593663,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 6
       },
       {
         "id": "media_1789572056917_6_mxw1",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789572054289_c5z74.jpg",
-        "isCover": false,
-        "fileSize": 1591433,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 7
       }
     ],
@@ -865,49 +1034,55 @@
       {
         "id": "media_1788346266770_0_ay2b",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346264206_xk9tv.jpg",
-        "isCover": true,
-        "fileSize": 371332,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1788346280908_1_n2te",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346278137_h57fi.jpg",
-        "isCover": false,
-        "fileSize": 1976975,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1788346277528_0_q4s5",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346273740_5gy1y.jpg",
-        "isCover": false,
-        "fileSize": 1902452,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1788346283775_2_o6rx",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346281420_05oz7.jpg",
-        "isCover": false,
-        "fileSize": 1964260,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1788346286430_3_uv74",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346284162_uuice.jpg",
-        "isCover": false,
-        "fileSize": 1654335,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       },
       {
         "id": "media_1788346291154_4_wo5l",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1788346286946_308id.jpg",
-        "isCover": false,
-        "fileSize": 3032021,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 5
       }
     ],
@@ -975,41 +1150,46 @@
       {
         "id": "media_1789222487116_0_vvhs",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222488485_r0h15.jpeg",
-        "isCover": true,
-        "fileSize": 567793,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789222491385_1_i82x",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222492969_a7tcc.jpeg",
-        "isCover": false,
-        "fileSize": 482062,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789222496235_2_f495",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222497779_u0p45.jpeg",
-        "isCover": false,
-        "fileSize": 612947,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789222507705_3_cskw",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222508347_9ev3p.png",
-        "isCover": false,
-        "fileSize": 579199,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       },
       {
         "id": "media_1789222516918_0_kgiz",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789222518478_ueqmv.jpeg",
-        "isCover": false,
-        "fileSize": 502476,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 4
       }
     ],
@@ -1074,17 +1254,19 @@
       {
         "id": "media_1790684992277_0_6qsn",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790684981038_h14i0.jpg",
-        "isCover": true,
-        "fileSize": 354556,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789661797597_0_fyj8",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789661793462_0nw59.jpg",
-        "isCover": false,
-        "fileSize": 2047448,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1151,33 +1333,37 @@
       {
         "id": "media_1789223827537_3_0025",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223828975_obe71.jpeg",
-        "isCover": true,
-        "fileSize": 546035,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789223812710_0_mx1n",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223814069_chob2.jpeg",
-        "isCover": false,
-        "fileSize": 482761,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       },
       {
         "id": "media_1789223816343_1_54bh",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223817687_3zj11.jpeg",
-        "isCover": false,
-        "fileSize": 435512,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 2
       },
       {
         "id": "media_1789223824441_2_kb1m",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789223825814_vux47.jpeg",
-        "isCover": false,
-        "fileSize": 415968,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 3
       }
     ],
@@ -1242,17 +1428,19 @@
       {
         "id": "media_1790684022403_0_e7gg",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790684011063_4u4lt.jpg",
-        "isCover": true,
-        "fileSize": 398531,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789660869901_0_fj33",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789660865570_l0fgx.jpg",
-        "isCover": false,
-        "fileSize": 3544622,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1317,17 +1505,19 @@
       {
         "id": "media_1790685071504_0_g8uf",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790685060265_yqy77.jpg",
-        "isCover": true,
-        "fileSize": 328540,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789661878507_0_de9q",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789661874478_aem94.jpg",
-        "isCover": false,
-        "fileSize": 2135670,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1392,17 +1582,19 @@
       {
         "id": "media_1790684638901_0_3t59",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790684627716_ufjk3.jpg",
-        "isCover": true,
-        "fileSize": 254724,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789661312081_0_3iwg",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789661307516_ifcgl.jpg",
-        "isCover": false,
-        "fileSize": 1751322,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1467,17 +1659,19 @@
       {
         "id": "media_1790684467437_0_lxxf",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790684456235_adeo9.jpg",
-        "isCover": true,
-        "fileSize": 284044,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789661148967_0_oq8z",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789661144606_pybvl.jpg",
-        "isCover": false,
-        "fileSize": 2093569,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1542,17 +1736,19 @@
       {
         "id": "media_1790685956714_0_snry",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790685945050_uhmf3.png",
-        "isCover": true,
-        "fileSize": 1887191,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1789660970360_0_ezgw",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1789660966395_7an39.jpg",
-        "isCover": false,
-        "fileSize": 1939987,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
@@ -1617,17 +1813,19 @@
       {
         "id": "media_1790686491152_0_c4g6",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790686479866_8aqgw.jpg",
-        "isCover": true,
-        "fileSize": 286774,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": true,
         "displayOrder": 0
       },
       {
         "id": "media_1790686070474_0_plxq",
         "url": "https://ftqwyzqaqiufnaendoko.supabase.co/storage/v1/object/public/portfolio/projects/proj_1790686058839_tp2gx.jpg",
-        "isCover": false,
-        "fileSize": 4157056,
         "mediaType": "image",
+        "videoUrl": "",
+        "videoFile": "",
+        "isCover": false,
         "displayOrder": 1
       }
     ],
