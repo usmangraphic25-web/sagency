@@ -236,40 +236,7 @@ const VIDEO_TILES = [
 
 // ─── GRAPHIC DESIGN TILES ───────────────────────────────────────────────────
 
-const GRAPHIC_TILES = [
-  {
-    id: "g1",
-    title: "Velox Gear Brand Identity & Packaging",
-    tag: "GRAPHIC · BRANDING",
-    image: "/assets/portfolio-graphic-v4.jpg",
-    client: "Velox Gear",
-    metricValue: "240%",
-    metricSub: "retail distribution growth",
-    result: "Full brand identity system, vector logo suite, and luxury box packaging drove +240% retail distribution growth",
-    problem: "Outdated visual identity and inconsistent packaging led to low retail buyer interest.",
-    solution: "Designed cohesive brand style guide, logo marks, typography scale, color palette, and custom packaging.",
-  },
-  {
-    id: "g2",
-    title: "AURA Wellness UI/UX Redesign",
-    tag: "GRAPHIC · UI/UX",
-    image: "/assets/portfolio/p (1).jpg",
-    client: "AURA Wellness",
-    metricValue: "-48%",
-    metricSub: "bounce rate cut",
-    result: "Clean UI/UX interface redesign reduced bounce rate by 48% and improved mobile engagement",
-  },
-  {
-    id: "g3",
-    title: "Organic Skincare Packaging & Label Suite",
-    tag: "GRAPHIC · PACKAGING",
-    image: "/assets/portfolio-amazon-v4.jpg",
-    client: "Pure Botanical",
-    metricValue: "+180%",
-    metricSub: "shelf appeal lift",
-    result: "Eco-friendly luxury print packaging suite elevated premium retail positioning",
-  }
-];
+const GRAPHIC_TILES = [];
 
 // ─── TRUST / RESULTS DATA ─────────────────────────────────────────────────────
 

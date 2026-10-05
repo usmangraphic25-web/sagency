@@ -339,13 +339,6 @@ const CASE_STUDIES = [
     statNumber: "3.8x",
     statLabel: "Organic signup conversion rate lift after Next.js portal launch",
   },
-  {
-    id: "cs3",
-    categoryTag: "BRANDING · GRAPHIC DESIGN",
-    projectName: "Velox Gear Rebrand & Packaging",
-    statNumber: "240%",
-    statLabel: "Increase in retail distribution sales following packaging redesign",
-  },
 ];
 
 export default function PortfolioTwo({ limit = null }) {

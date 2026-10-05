@@ -191,30 +191,7 @@ export default function PortfolioPage() {
       image: `${BASE_URL}/assets/webdev-wordpress.png`,
       url: `${BASE_URL}/portfolio?category=webdev`,
     },
-    {
-      title: "Velox Gear Brand Identity & Packaging",
-      tag: "GRAPHIC · BRANDING",
-      client: "Velox Gear",
-      description: "Full brand identity system, vector logo suite, and luxury box packaging drove +240% retail distribution growth.",
-      image: `${BASE_URL}/assets/portfolio-graphic-v4.jpg`,
-      url: `${BASE_URL}/portfolio?category=graphic`,
-    },
-    {
-      title: "AURA Wellness UI/UX Redesign",
-      tag: "GRAPHIC · UI/UX",
-      client: "AURA Wellness",
-      description: "Clean UI/UX interface redesign reduced bounce rate by 48% and improved mobile engagement.",
-      image: `${BASE_URL}/assets/portfolio/p (1).jpg`,
-      url: `${BASE_URL}/portfolio?category=graphic`,
-    },
-    {
-      title: "Organic Skincare Packaging & Label Suite",
-      tag: "GRAPHIC · PACKAGING",
-      client: "Pure Botanical",
-      description: "Eco-friendly luxury print packaging suite elevated premium retail positioning.",
-      image: `${BASE_URL}/assets/portfolio-amazon-v4.jpg`,
-      url: `${BASE_URL}/portfolio?category=graphic`,
-    },
+
     {
       title: "Anker Soundcore Product Commercial",
       tag: "AMAZON VIDEO",
